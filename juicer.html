@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>iSeaJs - juicer</title>
+	
+	<!--// 基础样式 -->
+	<link type="text/css" href="assets/style/base.css"/>
+
+    <!--// seajs config [localhost] -->
+    <!--//  seajs本地测试环境 -->
+	<script src="./assets/script/seajs/2.0.0/sea.js" data-config="config.js" id="seajsnode"></script>
+
+</head>
+
+<body>
+<input type="button" value="juicer" id="juicer_comeon"/>
+<div id="juicer_html"></div>
+
+<script id="juicer_tpl" type="text/template">
+    <ul>
+        {@each list as it,index}
+            <li>${it.name} (index: ${index})</li>
+        {@/each}
+        {@each blah as it}
+            <li>
+                num: ${it.num} <br />
+                {@if it.num==3}
+                    {@each it.inner as it2}
+                        ${it2.time} <br />
+                    {@/each}
+                {@/if}
+            </li>
+        {@/each}
+    </ul>
+</script>
+
+<script type="text/javascript">
+    seajs.use(['jquery', 'juicer'], function ($, juicer) {
+        $(function () {
+            $('#juicer_comeon').on('click', function(){
+				/* juicer */
+                var data = {
+					list: [
+						{name:' guokai', show: true},
+						{name:' benben', show: false},
+						{name:' dierbaby', show: true}
+					],
+					blah: [
+						{num: 1},
+						{num: 2},
+						{num: 3, inner:[
+							{'time': '15:00'},
+							{'time': '16:00'},
+							{'time': '17:00'},
+							{'time': '18:00'}
+						]},
+						{num: 4}
+					]
+				};
+
+				var tpl = $('#juicer_tpl').html();
+
+				$('#juicer_html').html(juicer(tpl, data));
+            })
+        });
+    });
+</script>
+</body>
+</html>

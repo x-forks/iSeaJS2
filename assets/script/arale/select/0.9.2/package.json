@@ -1,0 +1,26 @@
+{
+    "root": "arale",
+    "name": "select",
+    "version": "0.9.2",
+    "description": "模拟 select 的组件",
+    "tag": "widget",
+    "homepage": "http://aralejs.org/select",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aralejs/select.git"
+    },
+    "bugs": {
+        "url": "https://github.com/aralejs/select/issues"
+    },
+    "dependencies": {
+        "$": "$",
+        "overlay": "arale/overlay/0.9.13/overlay",
+        "templatable": "arale/widget/1.0.2/templatable"
+    },
+    "output": {
+        "select.js": "."
+    },
+    "tests": [
+        "select"
+    ]
+}

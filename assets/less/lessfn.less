@@ -1,0 +1,129 @@
+/* 
+	@名称: css-lessfn
+	@功能: 定义一些常用的样式的LESS Function
+*/
+
+/**
+ * 设置透明度
+ * 默认0.5
+ */
+.opacity(@opacityVal:0.5){
+    @opacityVal_100: @opacityVal*100;
+    filter: ~'alpha(opacity=@{opacityVal_100})';
+    opacity: @opacityVal;
+}
+
+/**
+ * 简单的圆角半径
+ * 默认5px
+ */
+.border-radius (@radius: 5px) {
+  -webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+}
+
+/**
+ * 四角的半径定制
+ * 默认都为5px
+ */
+.border-radius-custom (@topleft: 5px, @topright: 5px, @bottomleft: 5px, @bottomright: 5px) {
+	-webkit-border-radius: @topleft @topright @bottomright @bottomleft;
+	-moz-border-radius: @topleft @topright @bottomright @bottomleft;
+	border-radius: @topleft @topright @bottomright @bottomleft;
+}
+
+/**
+ * 方块阴影 Box Shadow
+ */
+.box-shadow (@x: 0px, @y: 3px, @blur: 5px, @color: #000) {
+	-webkit-box-shadow: @x @y @blur @color;
+	-moz-box-shadow: @x @y @blur @color;
+	box-shadow: @x @y @blur @color;
+}
+.box-shadow-alpha (@x: 0px, @y: 3px, @blur: 5px, @alpha: 0.5) {
+	-webkit-box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+	-moz-box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+	box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+}
+
+/**
+ * 元素过渡效果 Transition
+ */
+.transition (@prop: all, @time: 1s, @ease: linear) {
+	-webkit-transition: @prop @time @ease;
+	-moz-transition: @prop @time @ease;
+	-o-transition: @prop @time @ease;
+	-ms-transition: @prop @time @ease;
+	transition: @prop @time @ease;
+}
+
+/**
+ * 转换/旋转 Transform
+ */
+.transform (@rotate: 90deg, @scale: 1, @skew: 1deg, @translate: 10px) {
+	-webkit-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+	-moz-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+	-o-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+	-ms-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+	transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+}
+
+/**
+ * 颜色渐变 Gradients (线性渐变 Linear Gradient)
+ */
+.gradient (@origin: left, @start: #ffffff, @stop: #000000) {
+	background-color: @start;
+	background-image: -webkit-linear-gradient(@origin, @start, @stop);
+	background-image: -moz-linear-gradient(@origin, @start, @stop);
+	background-image: -o-linear-gradient(@origin, @start, @stop);
+	background-image: -ms-linear-gradient(@origin, @start, @stop);
+	background-image: linear-gradient(@origin, @start, @stop);
+}
+
+/**
+ * 颜色渐变 Gradients (快速渐变 Quick Gradient)
+ */
+.quick-gradient (@origin: left, @alpha: 0.2) {
+	background-image: -webkit-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+	background-image: -moz-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+	background-image: -o-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+	background-image: -ms-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+	background-image: linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+}
+
+/* 文字超出部分打点 */
+.text-ellipsis (){
+	overflow:hidden;
+	white-space:nowrap;
+	-o-text-overflow:ellipsis; /* Opera */
+	text-overflow:ellipsis; /* IE, Safari (WebKit) */
+}
+.text-ellipsis-hack (){
+	.text-ellipsis ();
+	_width: 100%; /* IE6 需要定义宽度 */
+}
+
+/* 定义图片居中的通用样式
+ * *font-size:175px; (height*0.873)
+ */
+.imgCenter ( @height ){
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	*display: block;
+	*font-family: Arial;
+	*line-height: 0;
+	*vertical-align: auto;
+	*font-size: @height*0.873;
+	img {
+		vertical-align: middle;
+	}
+}
+
+.minHeight (@height){
+	height: auto !important;
+	height: @height;
+	min-height: @height;
+}
+

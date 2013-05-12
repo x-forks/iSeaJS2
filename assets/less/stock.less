@@ -1,0 +1,231 @@
+/* 
+	@名称: css-stock
+	@功能: 定义一些常用的样式
+*/
+
+/* 公用颜色、边距、字体、尺寸... */
+/* 定义通用字体颜色 */
+.c000{color:#000;} /* 黑色 */
+.cfff{color:#fff;} /* 白色 */
+.cf00{color:#f00;} /* 红色 */
+.c333{color:#333;} /* 加深字体颜色 */
+.c666{color:#666;} /* 普通字体颜色 */
+.c999{color:#999;} /* 变浅字体颜色 */
+.cf60{color:#f60;} /* 橙色 */
+.caaa{ color:#aaa;} /*灰色*/
+.c39c{color:#39c} /*蓝色*/
+
+/* 定义通用字体类型 */
+.ffYH{font-family:~'\5FAE\8F6F\96C5\9ED1';} /* 微软雅黑 */
+.ffHT{font-family:~'\9ED1\4F53';} /* 微软雅黑 */
+.ffGE{font-family:Georgia;} /* Georgia,用于显示数字 */
+
+/* 定义通用字体大小及粗细 */
+.f0{font-size:0;}
+.f11{font-size:11px;}
+.f12{font-size:12px;}
+.f12b{font-size:12px; font-weight:700;}
+.f14{font-size:14px;}
+.f14b{font-size:14px; font-weight:700;}
+.f16{font-size:16px;}
+.f18{font-size:18px;}
+.f20{font-size:20px;}
+.fwb{font-weight:700;} /* 字体加粗 */
+.fwn{font-weight:400;} /* 字体正常 */
+.fsn{font-style:normal;}
+
+/* 定义通用内边距尺寸 */
+.p5{padding:5px;}
+.p10{padding:10px;}
+.p15{padding:15px;}
+.p20{padding:20px;}
+.pt5{padding-top:5px;}
+.pt10{padding-top:10px;}
+.pt15{padding-top:15px;}
+.pt20{padding-top:20px;}
+.pb5{padding-bottom:5px;}
+.pb10{padding-bottom:10px;}
+.pb15{padding-bottom:15px;}
+.pb20{padding-bottom:20px;}
+.pb30{padding-bottom:30px;}
+.pl5{padding-left:5px;}
+.pl10{padding-left:10px;}
+.pl15{padding-left:15px;}
+.pl20{padding-left:20px;}
+.pr5{padding-right:5px;}
+.pr10{padding-right:10px;}
+.pr15{padding-right:15px;}
+.pr20{padding-right:20px;}
+
+/* 定义通用外边距尺寸 */
+.mauto{margin-left:auto; margin-right:auto;} /* 定义margin居中的样式 */
+.m5{margin:5px;}
+.m10{margin:10px;}
+.m15{margin:15px;}
+.m20{margin:20px;}
+.mt5{margin-top:5px;}
+.mt10{margin-top:10px;}
+.mt15{margin-top:15px;}
+.mt20{margin-top:20px;}
+.mt30{margin-top:30px;}
+.mt40{margin-top:40px;}
+.mt50{margin-top:50px;}
+.mt100{margin-top:100px;}
+.mb5{margin-bottom:5px;}
+.mb10{margin-bottom:10px;}
+.mb15{margin-bottom:15px;}
+.mb20{margin-bottom:20px;}
+.mb50{margin-bottom:50px;}
+.mb100{margin-bottom:100px;}
+.ml5{margin-left:5px;}
+.ml10{margin-left:10px;}
+.ml15{margin-left:15px;}
+.ml20{margin-left:20px;}
+.mr5{margin-right:5px;}
+.mr10{margin-right:10px;}
+.mr15{margin-right:15px;}
+.mr20{margin-right:20px;}
+
+/* 定义部分css3样式 */
+.radius2{
+  .border-radius(2px);
+}
+.radius5{
+  .border-radius(5px);
+}
+
+
+/* 定义清除浮动的样式 */
+.clearfix:after{
+    content:".";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+    font-size:0;
+}
+.clearfix{
+    display:inline-block;
+}
+/* hides from ie-mac \*/
+* html .clearfix{
+    height:1%;
+}
+.clearfix{
+    display:block;
+}
+/* end hide from ie-mac */
+/* 强制性清除浮动[!慎用] */
+.clr{
+    clear:both;
+    height:0;
+    line-height:0;
+    font-size:0;
+}
+/* 简易版清除浮动 */
+.clear{
+  clear:both;
+}
+
+/* 定义浮动 */
+.left{
+    float:left;
+}
+.right{
+    float:right;
+}
+.left, .right /* Hack IE6 */ {
+    _display: inline;
+}
+
+/* 定义定位 */
+.relative{
+    position:relative;
+}
+.absolute{
+    position:absolute;
+}
+
+/* 定义文字显示方式 */
+.tal{
+    text-align:left;
+}
+.tac{
+    text-align:center;
+}
+.tar{
+    text-align:right;
+}
+
+/* 定义取消字体下划线 */
+.nonline:hover, .nonline a:hover{
+    text-decoration:none;
+}
+
+/* 定义文字超出部分用省略号代替 */
+.ellipsis{
+    overflow:hidden;
+	white-space:nowrap;
+	-o-text-overflow:ellipsis; /* Opera */
+	text-overflow:ellipsis; /* IE, Safari (WebKit) */
+	_width: 100%; /* IE6 需要定义宽度 */
+}
+
+/* 强制换行 */
+.breakall{
+    word-wrap:break-word;
+    word-break:break-all;
+}
+
+/* 定义图片居中的通用样式 */
+.imgCenter{
+	display:table-cell;
+	text-align:center;
+	vertical-align:middle;
+	*display:block;
+	*font-family:Arial;
+	*line-height:0;
+	*vertical-align:auto;
+    /* *font-size:175px; (height*0.873) */
+}
+.imgCenter img{
+    vertical-align:middle;
+}
+
+/* 元素居中 */
+.cwrap{
+    float:left;
+    position:relative;
+    left:50%;
+    z-index:100;
+}
+.cwrap .cwrap-content{
+    position:relative;
+    left:-50%;
+    *float:left;
+}
+/* 旋转45° @tony 2012-09-08 
+/* CSS mini后会影响样式，所以注释掉 
+.rotate45{
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865475, M12=-0.7071067811865477, M21=0.7071067811865477, M22=0.7071067811865475, SizingMethod='auto expand')";
+    filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865475, M12=-0.7071067811865477, M21=0.7071067811865477, M22=0.7071067811865475, SizingMethod='auto expand');
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform:rotate(45deg);
+}
+html:root .rotate45{
+    filter:none\9;
+}
+*/
+
+/* 定义隐藏属性，一般用于js */
+.none{display:none;}
+.hidden{visibility:hidden;}
+.visible{visibility:visible;}
+
+/* center-wrap */
+.center-wrap{float:left; position:relative; left:50%; z-index:100;}
+.center-wrap-content{position:relative; left:-50%;}
+*html .center-wrap-content{float:left;}

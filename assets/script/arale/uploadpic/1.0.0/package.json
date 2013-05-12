@@ -1,0 +1,26 @@
+{
+    "name": "uploadpic",
+    "version": "1.0.0",
+    "root": "arale",
+    "description": "图片上传",
+    "homepage": "",
+    "author": "qiang.mou",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "bugs": {
+        "url": ""
+    },
+    "license": "MIT",
+    "dependencies": {
+        "$" : "$",
+        "base" : "arale/base/1.0.1/base" ,
+        "swfobject" : "gallery/swfobject/2.2.0/swfobject",
+        "jsuri" : "gallery/jsuri/1.2.2/jsuri"
+    },
+    "tests": ["uploadpic"],
+    "output": {
+        "uploadpic.js": "."
+    }
+}

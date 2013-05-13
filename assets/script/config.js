@@ -24,18 +24,24 @@ seajs.config({
 			,deps: ['jquery', 'lib/artDialog/5.0.3/skin/default.css']
 			,exports: 'artDialog'
 		}
+		/*
 		,'swfobject': {
 			src: 'lib/swfobject/2.3.0/swfobject.min.js'
 			,exports: 'swfobject'
 		}
-		/*
+		*/
 		,'SWFUpload': {
 			src: 'lib/swfupload/2.2.0/swfupload.min.js'
 			,exports: 'SWFUpload'
 		}
-		*/
 	}
-
+	
+	/*
+	// 预加载项
+	,preload: [
+		this.swfobject ? '' : 'swfobject'
+	]
+	*/
 	// 开启debug
 	,debug: 1
 	

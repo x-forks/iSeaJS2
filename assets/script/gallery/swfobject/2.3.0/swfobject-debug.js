@@ -836,6 +836,6 @@ var swfobject = function() {
 
     };
 }();
-
-  return swfobject;
+	window.swfobject = swfobject;
+	return swfobject;
 });

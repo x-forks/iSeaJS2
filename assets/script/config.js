@@ -1,17 +1,14 @@
 /**
  * SeaJS Config
- * localhost
  */
 
 seajs.config({
-	// Enable plugins
-	plugins: ['shim']
+	plugins: ['shim'],
 
-	// 当模块标识很长时，可以使用 alias 配置来简化。
-	,alias : {
+	alias : {
 	    // gallery
 	    'jquery': {
-	    	src: 'gallery/jquery/1.9.1/jquery.js',
+	    	src: 'gallery/jquery/1.8.0/jquery',
             exports: 'jQuery'
 	    }
 		,'juicer':'gallery/juicer/0.6.4/juicer'
@@ -21,8 +18,7 @@ seajs.config({
 		// lib
 	    ,'artDialog': {
 			src: 'lib/artDialog/5.0.3/jquery.artDialog.js'
-			,deps: ['jquery', 'lib/artDialog/5.0.3/skin/default.css']
-			,exports: 'artDialog'
+			,deps: ['jquery']
 		}
 		/*
 		,'swfobject': {
@@ -30,19 +26,30 @@ seajs.config({
 			,exports: 'swfobject'
 		}
 		*/
+		,'SWFUpload': 'lib/swfupload/2.2.0/swfupload.min.js'
+		/*
 		,'SWFUpload': {
 			src: 'lib/swfupload/2.2.0/swfupload.min.js'
-			,exports: 'SWFUpload'
+			//,exports: 'SWFUpload'
 		}
-	}
+		*/
+	},
 	
 	/*
-	// 预加载项
-	,preload: [
-		this.swfobject ? '' : 'swfobject'
-	]
+	preload: [
+		this.jQuery ? '' : 'jquery'
+	],
 	*/
-	// 开启debug
-	,debug: 1
+
+	debug: 1
 	
 });
+
+
+/*
+ * 1、jquery ---> OK
+ * 2、juicer ---> OK
+ * 3、artDialog ---> OK
+ * 4、SWFUpload ---> OK
+ * 5、swfobject ---> ERROR
+ */

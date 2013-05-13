@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>iSeaJs - swfupload </title>
+	
+	<style type="text/css">
+	<!--
+	/* css reset start @tony | 2011.11.1 [copy from taobao] */
+	body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}body,button,input,select,textarea{font:12px/1.5 tahoma,arial,\5b8b\4f53;}h1,h2,h3,h4,h5,h6{font-size:100%;}address,cite,dfn,em,var{font-style:normal;}code,kbd,pre,samp{font-family:courier new,courier,monospace;}small{font-size:12px;}ul,ol{list-style:none;}a{color:#4183c4;text-decoration:none;}a:hover{text-decoration:underline;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}legend{color:#000;}fieldset,img{border:0;}button,input,select,textarea{font-size:100%;}table{border-collapse:collapse;border-spacing:0;}
+	.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}.clearfix{display:inline-block;}/* hides from ie-mac \*/* html .clearfix{height:1%;}.clearfix{display:block;}/* end hide from ie-mac */ .fl{float:left;}.fr{float:right;}.hidden{display:none!important;}
+
+	/* css common */
+	.p5{padding:5px;}.p10{padding:10px;}.p15{padding:15px;}.p20{padding:20px;}.pt5{padding-top:5px;}.pt10{padding-top:10px;}.pt15{padding-top:15px;}.pt20{padding-top:20px;}.pb5{padding-bottom:5px;}.pb10{padding-bottom:10px;}.pb15{padding-bottom:15px;}.pb20{padding-bottom:20px;}.pl5{padding-left:5px;}.pl10{padding-left:10px;}.pl15{padding-left:15px;}.pl20{padding-left:20px;}.pr5{padding-right:5px;}.pr10{padding-right:10px;}.pr15{padding-right:15px;}.pr20{padding-right:20px;}.mauto{margin-left:auto;margin-right:auto;}.m5{margin:5px;}.m10{margin:10px;}.m15{margin:15px;}.m20{margin:20px;}.mt5{margin-top:5px;}.mt10{margin-top:10px;}.mt15{margin-top:15px;}.mt20{margin-top:20px;}.mt30{margin-top:30px;}.mt40{margin-top:40px;}.mt50{margin-top:50px;}.mb5{margin-bottom:5px;}.mb10{margin-bottom:10px;}.mb15{margin-bottom:15px;}.mb20{margin-bottom:20px;}.ml5{margin-left:5px;}.ml10{margin-left:10px;}.ml15{margin-left:15px;}.ml20{margin-left:20px;}.mr5{margin-right:5px;}.mr10{margin-right:10px;}.mr15{margin-right:15px;}.mr20{margin-right:20px;}
+
+	/* css upload */
+	h1{font-size:16px; margin-top:20px;}
+	.main960{width:960px; margin-left:auto; margin-right:auto;}
+	.wraper{background-color:#E7ECEE; border:1px solid #D2D9DD; border-radius:4px; color:#7B878C; margin:10px 0; padding:9px 8px 0 8px;}
+	.wraper h2{font-size:14px;}
+	.contain{margin:7px 0 0 -8px; width:100%; min-height:23px; padding:8px 8px 1px 8px; color:#666; background:#fff; border-top:1px solid #d8e6ec; border-bottom-right-radius:4px; border-bottom-left-radius:4px;}
+	.minibutton{position:relative; display:inline-block; color:#333; font-family:Helvetica,arial,freesans,clean,sans-serif; font-size:13px; font-weight:700; line-height:24px; text-shadow:0 1px 0 #fff; white-space:nowrap; border:1px solid #d4d4d4; border-bottom-color:#bcbcbc; border-radius:3px; background:#fafafa; background:-moz-linear-gradient(#fafafa,#eaeaea); background:-webkit-linear-gradient(#fafafa,#eaeaea); -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#eaeaea')"; cursor:pointer; -webkit-touch-callout:none; -webkit-user-select:none; -khtml-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;}
+	.minibutton:hover{color:#fff; text-decoration:none; text-shadow:0 -1px 0 rgba(0,0,0,0.3); border-color:#518cc6; border-bottom-color:#2a65a0; background:#599bdc; background:-moz-linear-gradient(#599bdc,#3072b3); background:-webkit-linear-gradient(#599bdc,#3072b3); -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bdc',endColorstr='#3072b3')";
+	}
+	.minibutton span{display:block; padding:0 10px;}
+
+	.upload-file{float:left; overflow:hidden; background:url(./assets/images/upload_file_bg.png) -300px 0 no-repeat #fff; border:1px solid #ddd; border-top:1px solid #cdcdcd; box-shadow:0 1px 0 #f1f1f1,inset 0 1px 1px #e0e0e0; padding:1px 5px; color:#999; width:188px; height:18px;}
+	.upload-loading{float:right; overflow:hidden; background:url(./assets/images/loading16_16.gif) 0 2px no-repeat; width:16px; height:18px; text-indent:-999px; display:none;}
+	.upload-submit{float:left; position:relative; line-height:21px;}
+	.upload-submit .swfupload{position:absolute; left:0; top:0; width:100%; height:100%;}
+	.upload-status{float:left; line-height:22px;}
+	.upload-success{background:#F0F5FF; border:solid 1px #CEE2F2; box-shadow:0 1px 0 #eff2f7,inset 0 1px 1px #eff2f7;}
+	.upload-error{background:#FFEBEB; border:solid 1px #d27777; box-shadow:0 1px 0 #f7ecec,inset 0 1px 1px #f7ecec;}
+	-->
+	</style>
+
+    <!--// seajs config [localhost] -->
+    <!--//  seajs本地测试环境 -->
+	<script src="./assets/script/seajs/2.0.0/sea.js" data-config="config.js" id="seajsnode"></script>
+
+</head>
+
+<body>
+	<div class="main960">
+		<h1>swfupload_demo</h1>
+		<div class="wraper">
+			<h2>demo1</h2>
+			<div class="contain">
+				<div class="clearfix">
+					<div class="upload-file clearfix mr5" id="upload_file">
+						<i class="upload-loading" id="upload_loading">loading</i>
+						<span id="upload_text"></span>
+					</div>
+					<a href="javascript:void(0);" class="minibutton upload-submit"><span>upload</span><em id="upload_submit_btn"></em></a>
+					<!--
+					<div class="upload-submit mr5" id="upload_submit">
+						
+						<a href="javascript:void(0);" class="minibutton"><span id="upload_submit_btn"></span>upload</a>
+					</div>
+					-->
+					<span class="upload-status" id="upload_status"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+    seajs.use(['jquery', 'SWFUpload'], function ($) {
+		$(function(){
+			var $uploadFile = $('#upload_file'),
+				$uploadLoading = $('#upload_loading'),
+				$uploadText = $('#upload_text'),
+				$uploadSubmit = $('#upload_submit'),
+				$uploadStatus = $('#upload_status');
+
+			var statusloading = '文件上传中，请稍后！',
+				statusok = '文件上传成功！',
+				statuserror = '文件上传失败！';
+
+			var settings = {
+					flash_url : "./assets/script/lib/swfupload/2.2.0/swfupload.swf",
+					upload_url: "./assets/script/lib/swfupload/2.2.0/upload.php",
+					//upload_url: "http://m.up360.com/ajax/uploadres", // 223测试机
+					file_post_name: 'file',
+					file_size_limit : '10 MB',
+					file_types : '*.jpg;*.gif;*.jepg;*.png',
+					file_types_description : 'Web Image Files',
+					file_upload_limit : 0,
+					file_queue_limit : 1,
+					debug: false,
+				
+					// Button settings			
+					//button_image_url: "images/blank.png",
+					button_width: "100%",
+					button_height: "100%",
+					button_placeholder_id: "upload_submit_btn",
+					button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+					button_cursor: SWFUpload.CURSOR.HAND,
+					button_action: SWFUpload.BUTTON_ACTION.SELECT_FILE,
+					
+					// event_handler functions
+					file_dialog_complete_handler : function(selected, queued){
+						if(queued != 0){
+							this.startUpload();
+						}
+					},
+					upload_start_handler : function(file){
+						$uploadFile.removeClass('upload-success upload-error');
+						$uploadText.html(file.name).attr('title', file.name);
+						$uploadLoading.show();
+						$uploadStatus.html(statusloading);
+						$uploadSubmit.hide();
+					},
+					upload_progress_handler : function(file, bytesComplete, bytesTotal){
+						var _precent = Math.ceil(bytesComplete/bytesTotal*100),
+							_position = _precent*1.88 - 300;
+						var _value = _position + 'px 0';
+						$uploadFile.css('backgroundPosition', _value);
+					},
+					upload_error_handler: function(){
+						$uploadFile.addClass('upload-error');
+						$uploadStatus.html(statuserror);
+					},
+					upload_success_handler: function(file, data){
+						$uploadFile.addClass('upload-success');
+						$uploadStatus.html(statusok);
+					},
+					upload_complete_handler: function(){
+						$uploadFile.attr('style', null);
+						$uploadSubmit.show();
+						$uploadLoading.hide();
+						setTimeout(function(){
+							$uploadStatus.html('');
+						}, 1500);
+						//alert('ajax');
+					}
+				};	
+			var swfu = new SWFUpload(settings);
+		});
+
+	});
+</script>
+
+
+</body>
+</html>

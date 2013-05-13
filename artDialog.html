@@ -14,15 +14,21 @@
 </head>
 
 <body>
-<input type="button" value="artDialog" id="artDialog_test"/>
+<input type="button" value="artDialog" id="artDialog_test" disabled="disabled" style="color:#f00" />
 
 
 <script type="text/javascript">
-    seajs.use(['jquery', 'artDialog'], function ($, artDialog) {
+    seajs.use(['jquery', 'artDialog', './assets/script/lib/artDialog/5.0.3/skin/default.css'], function ($, artDialog) {
         $(function () {
-            $('#artDialog_test').on('click', function(){
-                $.artDialog()
-            })
+			if(artDialog){
+				$('#artDialog_test')
+					.attr('disabled', null)
+					.css('color', '#666')
+					.on('click', function(){
+						$.artDialog()
+					});
+			}
+            
         });
     });
 </script>

@@ -10,28 +10,15 @@
     <!--// seajs config [localhost] -->
     <!--//  seajs本地测试环境 -->
 	<script src="./assets/script/seajs/2.0.0/sea.js" data-config="config.js" id="seajsnode"></script>
-
+	
 </head>
 
 <body>
 <div id="myContent"><!--// creat flash here!!! --></div>
 
-<div id="myContent2"><!--// creat flash here!!! --></div>
-
-
-<!-- 
-<script src="./assets/script/lib/swfobject/2.3.0/swfobject.min.js"></script>
-<script type="text/javascript">
-	swfobject.embedSWF("./assets/swf/test.swf", "myContent", "300", "140", "9.0.0", "expressInstall.swf");
-</script>
- -->
-
-
 <script type="text/javascript">
     seajs.use(['swfobject'], function (swfobject) {
-		console.log(swfobject);
-		console.log(swfobject.embedSWF);
-		swfobject.embedSWF("./assets/swf/test.swf", "myContent2", "300", "140", "9.0.0", "expressInstall.swf");
+		swfobject.embedSWF("./assets/swf/test.swf", "myContent", "300", "140", "9.0.0", "expressInstall.swf");
     });
 </script>
 

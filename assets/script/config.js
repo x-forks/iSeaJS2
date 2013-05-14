@@ -12,6 +12,7 @@ seajs.config({
             exports: 'jQuery'
 	    }
 		,'juicer':'gallery/juicer/0.6.4/juicer'
+		,'json': 'gallery/json/1.0.3/json'
 		,'swfobject': 'gallery/swfobject/2.3.0/swfobject-debug'
 		
 

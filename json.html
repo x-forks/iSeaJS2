@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>iSeaJs - json </title>
+	
+	<!--// 基础样式 -->
+	<link type="text/css" href="assets/style/base.css"/>
+
+    <!--// seajs config [localhost] -->
+    <!--//  seajs本地测试环境 -->
+	<script src="./assets/script/seajs/2.0.0/sea.js" data-config="config.js" id="seajsnode"></script>
+
+
+</head>
+
+<body>
+<p>
+	JSON.stringify:
+	<span id="jsonString"><!--// creat info here!!! --></span>
+</p>
+<br /><br /><br />
+
+<p>
+	JSON.parse:
+	<span id="jsonParse"><!--// creat info here!!! --></span>
+</p>
+
+<script type="text/javascript">
+var data = {
+	"name": "tony",
+	"date": "2013/5/13"
+}
+
+
+seajs.use(['jquery', 'json'], function ($) {
+	$(function(){
+		var dataString = JSON.stringify(data)
+		$('#jsonString').html(dataString);
+
+
+		$('#jsonParse').html(function(){
+			var _dateParse = JSON.parse(dataString);
+			return [
+				'name: ',
+				_dateParse['name'],
+				';&nbsp;&nbsp;&nbsp;date: ',
+				_dateParse['date']
+			].join('');
+		});
+	});
+});
+</script>
+
+
+</body>
+</html>

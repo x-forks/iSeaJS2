@@ -44,7 +44,8 @@ var swfobject = function() {
             windows = p ? /win/.test(p) : /win/.test(u),
             mac = p ? /mac/.test(p) : /mac/.test(u),
             webkit = /webkit/.test(u) ? parseFloat(u.replace(/^.*webkit\/(\d+(\.\d+)?).*$/, "$1")) : false, // returns either the webkit version or false if not webkit
-            ie = nav.appName === "Microsoft Internet Explorer",
+            firefox = !(/compatible|webkit|khtml/).test(u) && /firefox/.test(u), // @tony 2013/5/14
+			ie = nav.appName === "Microsoft Internet Explorer",
             playerVersion = [0,0,0],
             d = null;
         if (typeof nav.plugins != UNDEF && typeof nav.plugins[SHOCKWAVE_FLASH] == OBJECT) {
@@ -73,7 +74,8 @@ var swfobject = function() {
             }
             catch(e) {}
         }
-        return { w3:w3cdom, pv:playerVersion, wk:webkit, ie:ie, win:windows, mac:mac };
+		// @tony 2013/5/14
+        return { w3:w3cdom, pv:playerVersion, wk:webkit, ie:ie, ff:firefox, win:windows, mac:mac };
     }(),
 
     /* Cross-browser onDomLoad
@@ -111,7 +113,8 @@ var swfobject = function() {
                     }());
                 }
             }
-            if (ua.wk) {
+			// @tony 2013/5/14
+            if (ua.wk || ua.ff) {
                 (function checkDomLoadedWK(){
                     if (isDomLoaded) { return; }
                     if (!/loaded|complete/.test(doc.readyState)) {
@@ -836,6 +839,7 @@ var swfobject = function() {
 
     };
 }();
+	// @tony 2013/5/14
 	window.swfobject = swfobject;
 	return swfobject;
 });

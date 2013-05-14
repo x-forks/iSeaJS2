@@ -20,27 +20,11 @@ seajs.config({
 			src: 'lib/artDialog/5.0.3/jquery.artDialog.js'
 			,deps: ['jquery']
 		}
-		/*
-		,'swfobject': {
-			src: 'lib/swfobject/2.3.0/swfobject.min.js'
-			,exports: 'swfobject'
-		}
-		*/
-		,'SWFUpload': 'lib/swfupload/2.2.0/swfupload.min.js'
-		/*
 		,'SWFUpload': {
 			src: 'lib/swfupload/2.2.0/swfupload.min.js'
-			//,exports: 'SWFUpload'
+			,exports: 'SWFUpload'
 		}
-		*/
 	},
-	
-	/*
-	preload: [
-		this.jQuery ? '' : 'jquery'
-	],
-	*/
-
 	debug: 1
 	
 });
@@ -51,5 +35,5 @@ seajs.config({
  * 2、juicer ---> OK
  * 3、artDialog ---> OK
  * 4、SWFUpload ---> OK
- * 5、swfobject ---> ERROR
+ * 5、swfobject ---> OK
  */

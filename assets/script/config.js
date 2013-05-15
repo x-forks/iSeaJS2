@@ -8,6 +8,7 @@ seajs.config({
 	alias : {
 		// Arale
 		'carousel': 'arale/switchable/0.9.12/carousel'
+		,'tabs': 'arale/switchable/0.9.12/tabs'
 		,'fixed': 'arale/fixed/1.0.1/fixed'
 
 	    // gallery

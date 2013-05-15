@@ -12,6 +12,26 @@
 	<script src="./assets/script/seajs/2.0.0/sea.js" data-config="config.js" id="seajsnode"></script>
 
 <style>
+	#demo1 { position: relative; width: 750px; padding-top: 29px; }
+    #demo1 .ui-switchable-nav { position: absolute; left: 20px; margin-top: -29px; z-index: 99;list-style-type: none; }
+    #demo1 .ui-switchable-nav li {
+        float: left;
+        width: 130px;
+        height: 27px;
+        line-height: 21px;
+        text-align: center;
+        background: url('./assets/images/switchable/tabs-sprite.gif') no-repeat 0 6px;
+        margin-right: 3px;
+        padding-top: 8px;
+        cursor: pointer;
+    }
+    #demo1 .ui-switchable-nav li.ui-switchable-active { background-position: 0 -40px; cursor: default; }
+    #demo1 .ui-switchable-content {
+        position: relative;
+        height: 120px;
+        padding: 20px;
+        border: 1px solid #AEC7E5;
+    }
     .scrollable {
         position: relative;
         width: 820px;
@@ -71,6 +91,25 @@
 
 <body>
 
+
+<div id="demo1" class="section">
+    <ul class="ui-switchable-nav">
+        <li>标题 A</li>
+        <li>标题 B</li>
+        <li>标题 C</li>
+        <li>标题 D</li>
+        <li>标题 E</li>
+    </ul>
+    <div class="ui-switchable-content">
+        <div>内容 A</div>
+        <div style="display: none">内容 B</div>
+        <div style="display: none">内容 C</div>
+        <div style="display: none">内容 D</div>
+        <div style="display: none">内容 E</div>
+    </div>
+</div>
+
+
 <div id="demo4" class="section scrollable" data-widget="carousel" data-effect="scrollx" data-easing="easeOutStrong" data-step="5" data-view-size="[680]" data-circular="true">
     <span id="scroller-prev" class="prev" data-role="prev">&lsaquo; 上一页</span>
     <span id="scroller-next" class="next" data-role="next">下一页 &rsaquo;</span>
@@ -101,8 +140,16 @@
 </div>
 
 <script type="text/javascript">
-seajs.use(['jquery', 'carousel'], function ($, carousel) {
+seajs.use(['jquery', 'tabs', 'carousel'], function ($, tabs, carousel) {
 	$(function(){
+		var demo1 = new tabs({
+				element: '#demo1',
+				triggers: '#demo1 .ui-switchable-nav li',
+				panels: '#demo1 .ui-switchable-content div',
+				activeIndex: 2,
+				effect: 'fade'
+			}).render();
+
 		var demo4 = new carousel({
 			element: '#demo4',
 			panels: '#demo4 .ui-switchable-content img',

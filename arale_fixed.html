@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>iSeaJs - switchable </title>
+	
+	<!--// 基础样式 -->
+	<link type="text/css" rel="stylesheet" href="./assets/style/base.min.css" />
+
+	<style type="text/css">
+	.c960{
+		width: 960px;
+		margin: 0 auto;
+	}
+	.help {
+		height: 300px;
+		background-color: #f3f4f9;
+		text-align: center;
+		line-height: 300px;
+	}
+	#test {
+		background: #08c;
+		color: #fff;
+		width: 300px;
+		height: 40px;
+		line-height: 40px;
+		z-index: 1;
+		text-align: center;    
+	}
+	</style>
+
+    <!--// seajs config [localhost] -->
+    <!--//  seajs本地测试环境 -->
+	<script src="./assets/script/seajs/2.0.0/sea.js" data-config="config.js" id="seajsnode"></script>
+
+
+</head>
+
+<body>
+
+<div class="c960">
+	<div class="help">撑高度的元素。</div>
+	<div id="test">跟随滚动的测试元素。</div>
+	<div class="help" style="height: 1500px; line-height: 1500px;">撑高度的元素。</div>
+</div>
+
+<script type="text/javascript">
+seajs.use(['jquery', 'fixed'], function ($, fixed) {
+	$(function(){
+		fixed('#test', 30);
+	});
+});
+</script>
+
+
+</body>
+</html>

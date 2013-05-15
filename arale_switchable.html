@@ -5,7 +5,7 @@
     <title>iSeaJs - switchable </title>
 	
 	<!--// 基础样式 -->
-	<link type="text/css" href="assets/style/base.css"/>
+	<link type="text/css" rel="stylesheet" href="./assets/style/base.min.css" />
 
     <!--// seajs config [localhost] -->
     <!--//  seajs本地测试环境 -->
@@ -15,6 +15,7 @@
     .scrollable {
         position: relative;
         width: 820px;
+		padding: 10px;
     }
     .scrollable .prev, .scrollable .next {
         position: absolute;
@@ -23,19 +24,24 @@
         cursor: pointer;
     }
     .scrollable .prev { 
-        left: 10px; 
+        left: 0; 
     }
-    .scrollable .next { right: 10px; }
+    .scrollable .next { 
+		right: 0;
+	}
     .scrollable .disable { color: #ddd; cursor: default; }
     .scrollable .ui-switchable-nav {
         position: absolute;
         right: 30px;
-        top: -20px;
+        top: 0;
     }
     .scrollable .ui-switchable-nav li {
         float: left;
-        padding: 5px;
-        font-size: 18px;
+        padding: 3px 5px 0;
+        font-size: 30px;
+		line-height: 18px;
+		height: 15px;
+		overflow: hidden;
         cursor: pointer;
     }
     .scrollable .ui-switchable-nav li.ui-switchable-active {
@@ -70,37 +76,37 @@
     <span id="scroller-next" class="next" data-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
         <div class="ui-switchable-content" data-role="content">
-            <img alt="" src="http://farm1.static.flickr.com/143/321464099_a7cfcb95cf_t.jpg"/>
-            <img alt="" src="http://farm4.static.flickr.com/3089/2796719087_c3ee89a730_t.jpg"/>
-            <img alt="" src="http://farm1.static.flickr.com/79/244441862_08ec9b6b49_t.jpg"/>
-            <img alt="" src="http://farm1.static.flickr.com/28/66523124_b468cf4978_t.jpg"/>
-            <img alt="" src="http://farm1.static.flickr.com/164/399223606_b875ddf797_t.jpg"/>
-            <img alt="" src="http://farm1.static.flickr.com/163/399223609_db47d35b7c_t.jpg"/>
-            <img alt="" src="http://farm1.static.flickr.com/135/321464104_c010dbf34c_t.jpg"/>
-            <img alt="" src="http://farm1.static.flickr.com/40/117346184_9760f3aabc_t.jpg"/>
-            <img alt="" src="http://farm1.static.flickr.com/153/399232237_6928a527c1_t.jpg"/>
-            <img alt="" src="http://farm1.static.flickr.com/50/117346182_1fded507fa_t.jpg"/>
-            <img alt="" src="http://farm4.static.flickr.com/3629/3323896446_3b87a8bf75_t.jpg"/>
-            <img alt="" src="http://farm4.static.flickr.com/3023/3323897466_e61624f6de_t.jpg"/>
-            <img alt="" src="http://farm4.static.flickr.com/3650/3323058611_d35c894fab_t.jpg"/>
-            <img alt="" src="http://farm4.static.flickr.com/3635/3323893254_3183671257_t.jpg"/>
-            <img alt="" src="http://farm4.static.flickr.com/3624/3323893148_8318838fbd_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/321464099_a7cfcb95cf_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/2796719087_c3ee89a730_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/244441862_08ec9b6b49_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/66523124_b468cf4978_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/399223606_b875ddf797_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/399223609_db47d35b7c_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/321464104_c010dbf34c_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/117346184_9760f3aabc_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/399232237_6928a527c1_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/117346182_1fded507fa_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/3323896446_3b87a8bf75_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/3323897466_e61624f6de_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/3323058611_d35c894fab_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/3323893254_3183671257_t.jpg"/>
+            <img alt="demo_img" src="./assets/images/switchable/3323893148_8318838fbd_t.jpg"/>
         </div>
         <ul class="ui-switchable-nav" data-role="nav">
-            <li class="ui-switchable-active">&bull;</li>
-            <li>&bull;</li>
-            <li>&bull;</li>
+            <li class="ui-switchable-active" title="1/3">&bull;</li>
+            <li title="2/3">&bull;</li>
+            <li title="3/3">&bull;</li>
         </ul>
     </div>
 </div>
 
 <script type="text/javascript">
-seajs.use(['jquery', './assets/script/arale/switchable/0.9.12/carousel'], function ($, Carousel) {
+seajs.use(['jquery', 'carousel'], function ($, carousel) {
 	$(function(){
-		carousel = new Carousel({
+		var demo4 = new carousel({
 			element: '#demo4',
 			panels: '#demo4 .ui-switchable-content img',
-			triggers: '#demo4 .ui-switchable-nav li',
+			//triggers: '#demo4 .ui-switchable-nav li',
 			easing: 'easeOutStrong',
 			effect: 'scrollx',
 			step: 5,

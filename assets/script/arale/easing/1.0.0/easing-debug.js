@@ -1,4 +1,4 @@
-define("arale/easing/1.0.0/easing-debug", [ "jquery-debug" ], function(require, exports, module) {
+define("arale/easing/1.0.0/easing-debug", [ "$-debug" ], function(require, exports, module) {
     // Based on Easing Equations (c) 2003 Robert Penner, all rights reserved.
     // This work is subject to the terms in
     // http://www.robertpenner.com/easing_terms_of_use.html
@@ -149,6 +149,6 @@ define("arale/easing/1.0.0/easing-debug", [ "jquery-debug" ], function(require, 
     // 可以通过 require 获取
     module.exports = Easing;
     // 也可以直接通过 jQuery.easing 来使用
-    var jQuery = require("jQuery-debug");
-    jQuery.extend(jQuery.easing, Easing);
+    var $ = require("$-debug");
+    $.extend($.easing, Easing);
 });

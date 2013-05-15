@@ -6,11 +6,16 @@ seajs.config({
 	plugins: ['shim'],
 
 	alias : {
+		// Arale
+		'carousel': 'arale/switchable/0.9.12/carousel'
+		,'fixed': 'arale/fixed/1.0.1/fixed'
+
 	    // gallery
-	    'jquery': {
+	    ,'jquery': {
 	    	src: 'gallery/jquery/1.8.0/jquery',
             exports: 'jQuery'
 	    }
+		,'$': 'gallery/jquery/1.8.0/jquery'
 		,'juicer':'gallery/juicer/0.6.4/juicer'
 		,'json': 'gallery/json/1.0.3/json'
 		,'swfobject': 'gallery/swfobject/2.3.0/swfobject-debug'

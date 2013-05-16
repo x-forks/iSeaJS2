@@ -24,7 +24,7 @@ seajs.config({
 
 		// lib
 	    ,'artDialog': {
-			src: 'lib/artDialog/5.0.3/jquery.artDialog.js'
+			src: 'lib/artDialog/5.0.3/jquery.artDialog.min.js'
 			,deps: ['jquery']
 		}
 		,'SWFUpload': {

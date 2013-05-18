@@ -19,20 +19,22 @@ seajs.config({
 		,'$': 'gallery/jquery/1.8.0/jquery'
 		,'juicer':'gallery/juicer/0.6.4/juicer'
 		,'json': 'gallery/json/1.0.3/json'
-		,'swfobject': 'gallery/swfobject/2.3.0/swfobject-debug'
+		,'swfobject': 'gallery/swfobject/2.3.0/swfobject'
 		
 
 		// lib
 	    ,'artDialog': {
-			src: 'lib/artDialog/5.0.3/jquery.artDialog.min.js'
+			src: '../lib/artDialog/5.0.3/jquery.artDialog.min.js'
 			,deps: ['jquery']
 		}
 		,'SWFUpload': {
-			src: 'lib/swfupload/2.2.0/swfupload.min.js'
+			src: '../lib/swfupload/2.2.0/swfupload.min.js'
 			,exports: 'SWFUpload'
 		}
-	},
-	debug: 1
+	}
+	,preload: [
+		this.jQuery ? '' : '$'
+	]
 	
 });
 

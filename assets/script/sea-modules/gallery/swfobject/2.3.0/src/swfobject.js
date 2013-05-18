@@ -1,4 +1,4 @@
-define("gallery/swfobject/2.3.0/swfobject-debug", [], function(require, exports, module) {
+define(function(require, exports, module) {
   /*!    SWFObject v2.3.20120118 <http://github.com/swfobject/swfobject>
     is released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
 */

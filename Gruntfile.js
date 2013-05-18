@@ -7,13 +7,12 @@ module.exports = function (grunt) {
         files: {
           'assets/style/base.css': 'assets/less/base.less'
         }
-      },
+      }
       // 压缩
 	  /*
       yuicompress: {
         files: {
-          
-          
+			'assets/style/base.min.css': 'assets/style/base.css'
         },
         options: {
           yuicompress: true

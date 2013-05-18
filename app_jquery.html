@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>iSeaJs - swfobject </title>
+    <title>iSeaJs - app_jquery </title>
 	
 	<!--// 基础样式 -->
 	<link type="text/css" rel="stylesheet" href="assets/style/base.min.css"/>
@@ -15,15 +15,14 @@
 </head>
 
 <body>
-<div id="myContent"><!--// creat flash here!!! --></div>
+<input type="button" value="say" id="btn" />
 
 <script type="text/javascript">
-seajs.use(['jquery'], function ($) {
-	$(function(){
-		seajs.use(['swfobject'], function () {
-			swfobject.embedSWF("./assets/swf/test.swf", "myContent", "300", "140", "9.0.0", "expressInstall.swf");
-		});
-	});
+
+seajs.use(['jquery', './assets/script/app/app_jquery/dist/app.js'], function ($, app) {
+	$('#btn').on('click', function(){
+		app.say();
+	})
 });
 </script>
 

@@ -10,6 +10,7 @@ seajs.config({
 		'carousel': 'arale/switchable/0.9.12/carousel'
 		,'tabs': 'arale/switchable/0.9.12/tabs'
 		,'fixed': 'arale/fixed/1.0.1/fixed'
+		,'sticky': 'arale/sticky/1.1.0/sticky'
 
 	    // gallery
 	    ,'jquery': {

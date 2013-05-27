@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>iSeaJs - app_jquery </title>
+    <title>iSeaJs - app1 </title>
 	
 	<!--// 基础样式 -->
 	<link type="text/css" rel="stylesheet" href="assets/style/base.min.css"/>
@@ -19,9 +19,9 @@
 
 <script type="text/javascript">
 
-seajs.use(['jquery', './assets/script/app/app_jquery/dist/app.js'], function ($, app) {
+seajs.use(['$', './assets/script/app/app1/dist/main.js'], function ($, app1) {
 	$('#btn').on('click', function(){
-		app.say();
+		app1.say();
 	})
 });
 </script>

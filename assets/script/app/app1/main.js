@@ -1,5 +1,5 @@
 ;define(function(require, exports, module) {
-	var $ = require('jquery');
+	var $ = require('$');
 
 	$(function(){
 		$('body').append('<p>jquery is ready!</p>');

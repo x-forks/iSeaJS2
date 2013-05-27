@@ -1,0 +1,22 @@
+{
+    "name": "charcount",
+    "version": "1.0.0",
+    "root": "eagle",
+    "description": "字数统计插件",
+    "tag": "widget",
+    "author": "cds",
+    "repository": {
+        "type": "git",
+        "url": "#"
+    },
+    "bugs": {
+        "url": "#"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "$":"$"
+    },
+    "output": {
+        "charcount.js": "../."
+    }
+}

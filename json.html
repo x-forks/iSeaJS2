@@ -33,7 +33,7 @@ var data = {
 }
 
 
-seajs.use(['jquery', 'json'], function ($) {
+seajs.use(['$', 'json'], function ($) {
 	$(function(){
 		var dataString = JSON.stringify(data)
 		$('#jsonString').html(dataString);

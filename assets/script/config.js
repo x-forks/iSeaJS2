@@ -13,10 +13,6 @@ seajs.config({
 		,'sticky': 'arale/sticky/1.1.0/sticky'
 
 	    // gallery
-	    ,'jquery': {
-	    	src: 'gallery/jquery/1.8.0/jquery',
-            exports: 'jQuery'
-	    }
 		,'$': 'gallery/jquery/1.8.0/jquery'
 		,'juicer':'gallery/juicer/0.6.4/juicer'
 		,'json': 'gallery/json/1.0.3/json'
@@ -25,11 +21,11 @@ seajs.config({
 
 		// lib
 	    ,'artDialog': {
-			src: '../lib/artDialog/5.0.3/jquery.artDialog.min.js'
-			,deps: ['jquery']
+			src: './assets/script/lib/artDialog/5.0.3/jquery.artDialog.min.js'
+			,deps: ['$']
 		}
 		,'SWFUpload': {
-			src: '../lib/swfupload/2.2.0/swfupload.min.js'
+			src: './assets/script/lib/swfupload/2.2.0/swfupload.min.js'
 			,exports: 'SWFUpload'
 		}
 	}

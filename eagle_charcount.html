@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<title>iSeaJs - charcount </title>
+		<!--// 基础样式 -->
+		<link type="text/css" rel="stylesheet" href="assets/style/base.min.css"/>
+		<link type="text/css" rel="stylesheet" href="assets/style/charcount.css">
+
+		<!--// seajs config [localhost] -->
+		<!--//  seajs本地测试环境 -->
+		<script src="./assets/script/sea-modules/seajs/2.0.0/sea.js" data-config="./assets/script/config.js" id="seajsnode"></script>
+	</head>
+	<body>
+		<div class="center900">
+			<h1>
+				jquery.charcount统计字数SeaJS模块化说明
+			</h1>
+			<table>
+				<tr>
+					<th class="title" colspan="3">Options</th>
+				</tr>
+				<tr>
+					<th class="name">名称</th>
+					<th class="explain">说明</th>
+					<th class="default">默认值/属性值/回调函数</th>
+				</tr>
+				<tr>
+					<td><em>allowed</em></td>
+					<td>用于限制最大允许个数</td>
+					<td>140 <i>（默认值）</i></td>
+				</tr>
+				<tr>
+					<td><em>warning</em></td>
+					<td>用于提示警告统计个数</td>
+					<td>25 <i>（默认值）</i></td>
+				</tr>
+				<tr>
+					<td><em>css</em></td>
+					<td>用于更改“字数统计”和“内容框”的样式</td>
+					<td>
+						<ul>
+							<li>normal: 'counter' <i>（默认类）</i></li>
+							<li>warning: 'warning' <i>（警告类）</i></li>
+							<li>exceeded: 'exceeded' <i>（超过类）</i></li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td><em>tips</em></td>
+					<td>
+						用于字数统计的元素和提示文本模板<br />
+						模板：<br />
+						1.{allowed:限制最大数量}
+						2.{available:可输入数量}<br />
+						3.{already:已输入数量}
+						4.{exceeded:已超过数量}
+					</td>
+					<td>
+						<ul>
+							<li>counterElement:span <i>（字数元素）</i></li>
+							<li>normal : '还可以输入{available}字' <i>（限制范围内显示模板）</i></li>
+							<li>exceeded : '已超过{exceeded}字' <i>（限制范围外显示模板）</i></li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td><em>label</em></td>
+					<td>用于提示输入文本信息</td>
+					<td>' ' <i>（默认值）</i></td>
+				</tr>
+				<tr>
+					<td><em>half</em></td>
+					<td>用于非汉字1/2个字符计算</td>
+					<td>true <i>（默认值）</i></td>
+				</tr>
+				<tr>
+					<td><em>capture</em></td>
+					<td>用于截取超出部分字符</td>
+					<td>true <i>（默认值）</i></td>
+				</tr>
+				<tr>
+					<td><em>initKey</em></td>
+					<td>调用模块时及时显示统计字数</td>
+					<td>false <i>（默认值）</i></td>
+				</tr>
+				<tr>
+					<td><em>closed</em></td>
+					<td>用于关闭统计功能</td>
+					<td>false <i>（默认值）</i></td>
+				</tr>
+				<tr>
+					<td><em>callbacks</em></td>
+					<td>回调函数集合</td>
+					<td>
+						<ul>
+							<li>common：fn <i>（每次计算字数时执行回调函数）</i></li>
+							<li>crisis：fn <i>（达到临界点值时执行回调函数）</i></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<th class="title" colspan="4">Methods</th>
+				</tr>
+				<tr>
+					<th class="name">名称</th>
+					<th class="args">参数</th>
+					<th class="explain">说明</th>
+					<th class="ret">返回值</th>
+				</tr>
+				<tr>
+					<td>init</td>
+					<td>content, tipmsg, options</td>
+					<td>模块化扩展接口，用于初始化统计字数</td>
+					<td>Object</td>
+				</tr>
+				<tr>
+					<td>getAlready</td>
+					<td>/</td>
+					<td>返回已输入的个数</td>
+					<td>Number</td>
+				</tr>
+				<tr>
+					<td>getAvailable</td>
+					<td>/</td>
+					<td>返回可输入的个数</td>
+					<td>Number</td>
+				</tr>
+				<tr>
+					<td>getExceeded</td>
+					<td>/</td>
+					<td>返回已超过的个数</td>
+					<td>Number</td>
+				</tr>
+				<tr>
+					<td>calculate </td>
+					<td>/</td>
+					<td>重新统计字数</td>
+					<td>/</td>
+				</tr>
+				<tr>
+					<td>open </td>
+					<td>/</td>
+					<td>开启字数统计</td>
+					<td>/</td>
+				</tr>
+				<tr>
+					<td>close</td>
+					<td>/</td>
+					<td>关闭字数统计</td>
+					<td>/</td>
+				</tr>
+			</table>
+			<div class="item">
+				<h3>引用seajs</h3>
+				<xmp>
+<script src="../../assets/base/scripts/seajs/2.0.0/sea.js" data-config="../../assets/base/scripts/init2.0.js"></script>
+				</xmp>
+				<h3>调用字数统计模块</h3>
+				<pre>
+seajs.use(['$', 'charcount'], function($, charcount) {
+  var charCount = charcount.init('#contentID','#tipID');
+});
+				</pre>
+			</div>
+			<div class="item">
+				<h3>示例1：seajs模块化</h3>
+				<p class="msg">
+					<span id="tip_0"></span>
+				</p>
+				<div class="clearfix">
+					<textarea id="content_0"></textarea>
+					<dl>
+						<dt>说明</dt>
+						<dd>1.seajs.use(['$', 'charcount'], function($, charcount)</dd>
+						<dd>2.charcount.init('#内容ID','#提示信息ID')</dd>
+					</dl>
+				</div>
+				<xmp></xmp>
+				<script type="text/javascript">
+					seajs.use(['$', 'charcount'], function($, charcount) {
+						
+						// 模块化扩展接口，用于初始化统计字数
+						var charCount_0 = charcount.init('#content_0','#tip_0');
+
+					});
+				</script>
+			</div>
+			<div class="item">
+				<h3>示例2：提供获取统计数据的接口</h3>
+				<p class="msg">
+					<span id="tip_1"></span>
+				</p>
+				<div class="clearfix">
+					<textarea id="content_1"></textarea>
+					<dl>
+						<dt>说明</dt>
+						<dd>1.函数：getAlready <i>（返回已输入的个数）</i></dd>
+						<dd>2.函数：getAvailable <i>（返回可输入的个数）</i></dd>
+						<dd>3.函数：getExceeded <i>（返回已超过的个数）</i></dd>
+					</dl>
+				</div>
+				<p>
+					<input type="button" id="btn_already_1" value="获取已输入个数">
+					<input type="button" id="btn_available_1" value="获取可输入个数">
+					<input type="button" id="btn_exceeded_1" value="获取已超过个数">
+				</p>
+				<xmp></xmp>
+				<script type="text/javascript">
+					seajs.use(['$', 'charcount'], function($, charcount) {
+						
+						// 自定义配置选项
+						var options_1 = {
+							allowed: 100,// 用于限制最大允许个数
+							half: true,// 用于非汉字1/2个字符计算
+							capture: false// 用于截取超出部分字符
+						};
+
+						// 模块化扩展接口，用于初始化统计字数
+						var charCount_1 = charcount.init('#content_1','#tip_1',options_1);
+
+						// 获取已输入的个数
+						$('#btn_already_1').click(function(){
+							var already = charCount_1.getAlready();
+
+							alert(already);
+						});
+
+						// 获取可输入的个数
+						$('#btn_available_1').click(function(){
+							var available = charCount_1.getAvailable();
+
+							alert(available);
+						});
+
+						// 获取已超过的个数
+						$('#btn_exceeded_1').click(function(){
+							var exceeded = charCount_1.getExceeded();
+
+							alert(exceeded);
+						});
+					});
+				</script>
+			</div>
+			<div class="item">
+				<h3>示例3：首次调用时开启计算状态</h3>
+				<p class="msg">
+					<span id="tip_2"></span>
+				</p>
+				<div class="clearfix">
+					<textarea id="content_2">内容-内容-内容</textarea>
+					<dl>
+						<dt>说明</dt>
+						<dd>1.options{initKey: true}</dd>
+					</dl>
+				</div>
+				<xmp></xmp>
+				<script type="text/javascript">
+					seajs.use(['$', 'charcount'], function($, charcount) {
+						
+						// 自定义配置选项
+						var options_2 = {
+							initKey: true
+						};
+
+						// 模块化扩展接口，用于初始化统计字数
+						var charCount_2 = charcount.init('#content_2','#tip_2',options_2);
+					});
+				</script>
+			</div>
+			<div class="item">
+				<h3>示例4：首次调用时未开启计算状态</h3>
+				<p class="msg">
+					<span id="tip_3"></span>
+				</p>
+				<div class="clearfix">
+					<textarea id="content_3">内容-内容-内容</textarea>
+					<dl>
+						<dt>说明</dt>
+						<dd>1.options{initKey: false}</dd>
+						<dd>2.函数：calculate <i>（手动调用字数统计）</i></dd>
+						<dd>3.函数：open <i>（开启计数）</i></dd>
+						<dd>4.函数：close <i>（关闭统计数）</i></dd>
+					</dl>
+				</div>
+				<p>
+					<input type="button" id="btn_calculate_3" value="统计个数">
+					<input type="button" id="btn_open_3" value="开启统计">
+					<input type="button" id="btn_close_3" value="关闭统计">
+				</p>
+				<xmp></xmp>
+				<script type="text/javascript">
+					seajs.use(['$', 'charcount'], function($, charcount) {
+
+						// 模块化扩展接口，用于初始化统计字数
+						var charCount_3 = charcount.init('#content_3','#tip_3');
+
+						// 重新统计字数
+						$('#btn_calculate_3').click(function(){
+							charCount_3.calculate();
+							$(this).attr('disabled','disabled');
+						});
+
+						// 开启字数统计
+						$('#btn_open_3').click(function(){
+							charCount_3.open();
+						});
+
+						// 关闭字数统计
+						$('#btn_close_3').click(function(){
+							charCount_3.close();
+						});
+					});
+				</script>
+			</div>
+			<div class="item">
+				<h3>示例5：回调函数</h3>
+				<p class="msg">
+					<span id="tip_4"></span>
+				</p>
+				<div class="clearfix">
+					<textarea id="content_4">内容-内容-内容</textarea>
+					<dl>
+						<dt>说明</dt>
+						<dd>1.common：fn <i>（每次计算字数时执行回调函数）</i></dd>
+						<dd>2.crisis：fn <i>（达到临界点值时执行回调函数）</i></dd>
+					</dl>
+				</div>
+				<p>
+					<span id="btn_common_4"></span>
+					<input type="button" id="btn_calculate_4" value="提交按钮">
+				</p>
+				<xmp></xmp>
+				<script type="text/javascript">
+					seajs.use(['$', 'charcount'], function($, charcount) {
+						var count = 0;
+						
+						// 自定义配置选项
+						var options_4 = {
+							// 用于限制最大允许个数
+							allowed: 20,
+
+							// 用于提示警告统计个数
+							warning: 10,
+
+							// callbacks 回调函数集合
+							callbacks: {
+								// 每次计算字数时执行回调函数
+								'common': function(){
+									count += 1;
+									$('#btn_common_4').text('计算：' + count + '次');
+								},
+								// 达到临界值时执行的回调函数
+								'crisis': function(){
+									$('#btn_calculate_4').attr('disabled','disabled');
+								}
+							}	
+						};
+
+						// 模块化扩展接口，用于初始化统计字数
+						var charCount_4 = charcount.init('#content_4','#tip_4',options_4);
+					});
+				</script>
+			</div>
+			<div class="item">
+				<h3>示例6：开启提示输入文本信息</h3>
+				<p class="msg">
+					<span id="tip_5"></span>
+				</p>
+				<div class="clearfix">
+					<textarea id="content_5"></textarea>
+					<dl>
+						<dt>说明</dt>
+						<dd>1.label:'请输入...' <i>（用于提示输入文本信息）</i></dd>
+					</dl>
+				</div>
+				<xmp></xmp>
+				<script type="text/javascript">
+					seajs.use(['$', 'charcount'], function($, charcount) {
+						
+						// 自定义配置选项
+						var options_5 = {
+							// 用于限制最大允许个数
+							allowed: 20,
+
+							// 用于提示警告统计个数
+							warning: 10,
+
+							// 用于提示输入文本信息
+							label: '请输入...'
+						};
+
+						// 模块化扩展接口，用于初始化统计字数
+						var charCount_5 = charcount.init('#content_5', '#tip_5', options_5);
+					});
+				</script>
+			</div>
+			<div class="item">
+				<h3>示例7：使用统计字数模板</h3>
+				<p class="msg">
+					<span id="tip_6"></span>
+				</p>
+				<div class="clearfix">
+					<textarea id="content_6"></textarea>
+					<dl>
+						<dt>说明</dt>
+						<dd>1.normal:'{already}/{allowed}' <i>（正常输入（未超出）显示模板）</i></dd>
+						<dd>2.exceeded <i>（超出之后显示模板）</i></dd>
+						<dt>模板</dt>
+						<dd>1.{allowed} <i>（限制最大数量）</i> </dd>
+						<dd>2.{available} <i>（可输入数量）</i></dd>
+						<dd>3.{already} <i>（已输入数量）</i></dd>
+						<dd>4.{exceeded} <i>（已超过数量）</i></dd>
+					</dl>
+				</div>
+				<xmp></xmp>
+				<script type="text/javascript">
+					seajs.use(['$', 'charcount'], function($, charcount) {
+						
+						// 自定义配置选项
+						var options_6 = {
+							// 用于限制最大允许个数
+							allowed: 20,
+
+							// 用于提示警告统计个数
+							warning: 10,
+
+							// 用于提示输入文本信息
+							label: '请输入...',
+
+							// 用于字数统计的元素和提示文本模板
+							tips: {
+								normal: '{already}/{allowed}',// 正常输入（未超出）显示模板
+								exceeded: '{exceeded}/{allowed}'// 超出之后显示模板
+							}
+						};
+
+						// 模块化扩展接口，用于初始化统计字数
+						var charCount_6 = charcount.init('#content_6', '#tip_6', options_6);
+					});
+				</script>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			seajs.use('$',function($){
+				$('div.item xmp').each(function(){
+					var html = $(this).next('script').html();
+					
+					if (html) {
+						//html = $.trim(html).replace(/\n\t/g,'\n    ').replace(/\t/g,'');
+						
+						$(this).html(html).hide();
+						
+						$('<p><a href="javascript:void(0)">显示代码</a></p>')
+						.insertBefore($(this))
+						.click(function(){
+							var $xmp = $(this).next('xmp');
+
+							if ($xmp.is(':hidden')) {
+								$xmp.show();
+								$(this).children('a').text('隐藏代码');	
+							}
+							else{
+								$xmp.hide();
+								$(this).children('a').text('显示代码');	
+							}
+						});
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

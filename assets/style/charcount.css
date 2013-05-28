@@ -1,0 +1,90 @@
+body{
+	background-color: #e2e9e7;
+	color: #333;
+}
+h1{
+	text-align: center;
+	font-size: 30px;
+	padding: 20px 0px;
+}
+.clear{
+	clear:both;
+}
+.item{
+	padding: 20px 0px 0px 20px;
+}
+xmp{
+	word-break: break-all;
+	word-wrap: break-word;
+}
+p{
+	padding: 5px 0px;
+}
+p.msg{
+	padding-left: 300px;
+}
+p.msg span{
+	height: 22px;
+	line-height: 19px;
+	color: #808080;
+}
+p.msg span .counter{
+	font-weight: 700;
+	font-size: 22px;
+	font-style: italic;
+	font-family: Constantia, Georgia;
+}
+p.msg span .warning{
+	color: #ff5500;
+}
+p.msg span .exceeded{
+	color: #E44443;
+}
+table{
+	margin: 20px;
+}
+table th{
+	font-size: 15px;
+}
+table th.name{
+	width: 150px;
+}
+table th.explain{
+	width: 360px;
+}
+table th.default{
+	width: 320px;
+}
+table th.args{
+	width: 200px;
+}
+table th.ret{
+	width: 120px;
+}
+table th,table td{
+	text-align: left;
+	border-bottom: 1px dotted #888;
+}
+table td{
+	height: 25px;
+}
+table td em{
+	font-weight: bold;
+}
+textarea{
+	width: 400px;
+	height: 100px;
+	float:left;
+}
+dl{
+	width: 300px;
+	overflow: hidden;
+	padding-left: 20px;
+	display: inline-block;
+}
+dt{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.center900{ margin:0 auto; padding-bottom:30px; width:900px; border:solid 1px #000; background-color:#fff;}

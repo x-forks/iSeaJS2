@@ -1,22 +1,23 @@
 {
-    "name": "charcount",
-    "version": "1.0.0",
-    "root": "eagle",
-    "description": "字数统计插件",
-    "tag": "widget",
-    "author": "cds",
-    "repository": {
-        "type": "git",
-        "url": "#"
+  "family": "eagle",
+  "name": "charcount",
+  "version": "1.0.0",
+  "description": "字数统计插件",
+  "author": "ChenDeSheng",
+  "spm": {
+    "alias": {
+      "$": "gallery/jquery/1.8.0/jquery"
     },
-    "bugs": {
-        "url": "#"
-    },
-    "license": "MIT",
-    "dependencies": {
-        "$":"$"
-    },
-    "output": {
-        "charcount.js": "../."
-    }
+    "output": [
+      "charcount.js"
+    ]
+  },
+  "devDependencies": {
+    "grunt": "0.4.1",
+    "grunt-cmd-transport": "0.2.1",
+    "grunt-cmd-concat": "0.2.1",
+    "grunt-contrib-uglify": "0.2.0",
+    "grunt-contrib-copy": "0.4.1",
+    "grunt-contrib-clean": "0.4.1"
+  }
 }

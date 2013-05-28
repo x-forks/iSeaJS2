@@ -19,17 +19,17 @@ module.exports = function(grunt) {
     if (name.indexOf('*') === -1) {
       if (/\.js$/.test(name)) {
         // concat js
-        jsconcats['.build/dist/' + name] = output[name].map(function(key) {
+        jsconcats['.build/' + name] = output[name].map(function(key) {
           return '.build/src/' + key;
         });
 
         jsmins.push({
-          src: ['.build/dist/' + name],
-          dest: 'dist/' + name
+          src: ['.build/' + name],
+          dest: name
         });
 
         // create debugfile
-        jsconcats['dist/' + name.replace(/\.js$/, '-debug.js')] = output[name].map(function(key) {
+        jsconcats[name.replace(/\.js$/, '-debug.js')] = output[name].map(function(key) {
           return '.build/src/' + key.replace(/\.js$/, '-debug.js');
         });
       } else {
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
           cwd: '.build/src',
           src: name,
           expand: true,
-          dest: 'dist'
+          dest: './'
         });
         console.log('copies:' + copies);
       }
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
           return !/\.(js)$/.test(src);
         },
         expand: true,
-        dest: 'dist'
+        dest: './'
       });
       jsmins.push({
         cwd: '.build/src',
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
           return /\.js$/.test(src);
         },
         expand: true,
-        dest: 'dist'
+        dest: './'
       });
     }
   });
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
         js: {
             options: {
                 alias: pkg.spm.alias,
-                idleading: './assets/script/' + pkg.family + '/' + pkg.name + '/dist/'
+                idleading: pkg.family + '/' + pkg.name + '/' + pkg.version + '/'
             },
             files: [{
                 cwd: 'src',
@@ -87,7 +87,12 @@ module.exports = function(grunt) {
     },
     concat: {
       options: {
-        include: 'relative'
+        include: 'relative',
+		banner: '/** @name: <%= pkg.name %> - v<%= pkg.version %> \n' +
+				' *  @description: <%= pkg.description %> \n'+
+				' *  @author: <%= pkg.author %> \n'+
+				' *  @date: <%= grunt.template.today("yyyy-mm-dd") %> \n'+
+				' */'
       },
       js: {files: jsconcats}
     },

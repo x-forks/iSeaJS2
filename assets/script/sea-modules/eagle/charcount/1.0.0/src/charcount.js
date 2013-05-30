@@ -59,7 +59,8 @@ define(function(require, exports, module) {
 	  		eventcommon = options.callbacks.common,
 	  		eventcrisis = options.callbacks.crisis,
 			$content = $(content),
-			$tipmsg = $(tipmsg);
+			$tipmsg = $(tipmsg),
+			contentEditable = ($content.attr('contentEditable') == 'true');
 
 		if (!$content.length || !$tipmsg.length) {return null;};
 
@@ -69,7 +70,7 @@ define(function(require, exports, module) {
 
 			// 已经输入{already}字
 			getAlready : function(){
-				var text = $content.val(),
+				var text = _getval(),
 					count = 0;
 				
 				// 判断内容是否包含提示输入信息
@@ -125,13 +126,33 @@ define(function(require, exports, module) {
 			}
 		};
 
+		// 获取编辑内容元素的值
+		function _getval() {
+			if (contentEditable) {
+				return $content.text();
+			}
+			else{
+				return $content.val();
+			}
+		}
+
+		// 设置编辑内容元素的值
+		function _setval(val) {
+			if (contentEditable) {
+				return $content.text(val);
+			}
+			else{
+				return $content.val(val);
+			}
+		}
+
 		// 截取字符串
 		function _capture() {
 
-			var str = $content.val();
+			var str = _getval();
 
 			if (!options.half) {
-				$content.val(str.substring(0, options.allowed));
+				_setval(str.substring(0, options.allowed));
 
 				return;
 			}
@@ -155,7 +176,7 @@ define(function(require, exports, module) {
 			    text += str.substr(i,1);
 			}
 
-			$content.val(text);
+			_setval(text);
     	}
 
     	// 字符串格式化
@@ -236,9 +257,19 @@ define(function(require, exports, module) {
 				return;
 			}
 
-			var already = charCount.getAlready(),// 已经输入{already}字
-				available = charCount.getAvailable(),// 还可以输入{available}字
-				exceeded = charCount.getExceeded();// 已经超过{exceeded}字
+			var already = 0,// 已经输入{already}字
+				available = 0,// 还可以输入{available}字
+				exceeded = 0;// 已经超过{exceeded}字
+
+			// 统计已输入、可输入、已超过个数
+			function statistics(){
+				already = charCount.getAlready();
+				available = charCount.getAvailable();
+				exceeded = charCount.getExceeded();
+			}
+
+			// 开始统计
+			statistics();
 
 			// 每次计算字数时执行回调函数
 			eventcommon.call();
@@ -249,6 +280,9 @@ define(function(require, exports, module) {
 				// 超出部分截取
 				if (options.capture) {
 					_capture();
+
+					// 超出截取后重新统计
+					statistics();
 
 					_reftipmsg('warning', already, 0, exceeded);
 				}
@@ -277,27 +311,27 @@ define(function(require, exports, module) {
 		}
 
 		// 设置输入框提示文本信息
-		if ($.trim(options.label) != "" && $content.val() == '') {
-			$content.val(options.label);
+		if ($.trim(options.label) != "" && _getval() == '') {
+			_setval(options.label);
 		}
 
 		// 绑定即时监控事件
 		// onpropertychange 这个事件是IE专用的，可以监控文本框的值是否改变（过在IE9下这个事件只能监控增加的内容而不能监控删除的内容）
 		// oninput 这个事件是专门针对非IE浏览器的，效果和 onpropertychange 是一样的
 		// onkeydown这个事件是为了解决onpropertychange 在IE9下存在的那个问题的
-		$content.die('.cc').live('propertychange.cc input.cc keydown.cc keyup.cc change.cc', _calculate);
+		$content.off('.cc').on('propertychange.cc input.cc keydown.cc keyup.cc change.cc', _calculate);
 
 		// 获取焦点设置label提示信息内容
-		$content.die('.cf').live('focus.cf', function(){
-			if ($.trim(options.label) != "" && $.trim(options.label) == $.trim($(this).val())) {
-				$(this).val('');
+		$content.off('.cf').on('focus.cf', function(){
+			if ($.trim(options.label) != "" && $.trim(options.label) == $.trim(_getval())) {
+				_setval('');
 			}
 		});
 
 		// 失去焦点设置label提示信息内容
-		$content.die('.cb').live('blur.cb', function(){
-			if ($.trim(options.label) != "" && $(this).val() == '') {
-				$(this).val(options.label);
+		$content.off('.cb').on('blur.cb', function(){
+			if ($.trim(options.label) != "" && _getval() == '') {
+				_setval(options.label)
 			}
 		});
 

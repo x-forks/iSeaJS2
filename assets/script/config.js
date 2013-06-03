@@ -26,6 +26,10 @@ seajs.config({
 			src: './assets/script/lib/artDialog/5.0.3/jquery.artDialog.min.js'
 			,deps: ['$']
 		}
+		,'aeImageResize': {
+			src: './assets/script/lib/aeImageResize/2.1.3/jquery.ae.image.resize.min.js'
+			,deps: ['$']
+		}
 		,'SWFUpload': {
 			src: './assets/script/lib/swfupload/2.2.0/swfupload.min.js'
 			,exports: 'SWFUpload'
@@ -36,12 +40,3 @@ seajs.config({
 	]
 	
 });
-
-
-/*
- * 1、jquery ---> OK
- * 2、juicer ---> OK
- * 3、artDialog ---> OK
- * 4、SWFUpload ---> OK
- * 5、swfobject ---> OK
- */

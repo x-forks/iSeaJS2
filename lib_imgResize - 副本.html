@@ -13,24 +13,18 @@
 <h1 class="mb20">jQuery Image Resize Plugin in <a href="https://github.com/adeelejaz/jquery-image-resize">GitHub</a></h1>
 
 <div id="aeImageResize_wrap">
-	<img src="./assets/images/aeImageResize/test.png" alt="test" width="300" />
-	<img src="./assets/images/aeImageResize/EclipseCanoo1440x900.png" alt="EclipseCanoo" width="300" />
-	<img src="./assets/images/aeImageResize/Sky.jpg" alt="Sky" width="300" />
+	<img src="./assets/images/aeImageResize/EclipseCanoo1440x900.png" alt="EclipseCanoo" />
+	<img src="./assets/images/aeImageResize/Sky.jpg" alt="Sky" />
 </div>
 
 <!--// seajs config [localhost] -->
 <script src="./assets/script/sea-modules/seajs/2.0.0/sea.js" data-config="./assets/script/config.js" id="seajsnode"></script>
 <script type="text/javascript">
-    seajs.use(['$', 'imgReady'], function ($, imgReady) {
+    seajs.use(['$', 'aeImageResize'], function ($) {
         $(function () {
-			$('img', '#aeImageResize_wrap').each(function (){
-				var _this = this,
-					_src = _this.src;
-				imgReady(_src, function(){
-					if(window.console){
-						console.log(_this.alt + '==> width: ' + this.width + '; & height: ' + this.height + ';');
-					}
-				})
+			$('img', '#aeImageResize_wrap').aeImageResize({
+				height: 250,
+				width: 250
 			});            
         });
     });

@@ -1,0 +1,20 @@
+{
+  "family": "eagle",
+  "name": "imgReady",
+  "version": "1.0.0",
+  "description": "图片头数据加载就绪事件 - 更快获取图片尺寸，参考了TangBin的代码，改成CMD模式",
+  "author": "tony<zhujf620[at]gmail.com>",
+  "spm": {
+    "output": [
+      "imgReady.js"
+    ]
+  },
+  "devDependencies": {
+    "grunt": "0.4.1",
+    "grunt-cmd-transport": "0.2.1",
+    "grunt-cmd-concat": "0.2.1",
+    "grunt-contrib-uglify": "0.2.0",
+    "grunt-contrib-copy": "0.4.1",
+    "grunt-contrib-clean": "0.4.1"
+  }
+}

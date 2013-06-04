@@ -19,7 +19,10 @@ seajs.config({
 		,'sticky': 'arale/sticky/1.1.0/sticky'
 
 		// eagle
+		// 'charcount': 字数统计
 		,'charcount': 'eagle/charcount/1.0.0/charcount'
+		// 'imgReady': 图片头数据加载就绪事件 - 更快获取图片尺寸
+		,'imgReady': 'eagle/imgReady/1.0.0/imgReady'
 
 		// lib
 	    ,'artDialog': {

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>iSeaJs - aeImageResize  </title>
+    <title>iSeaJs - imgReady  </title>
 	
 	<!--// 基础样式 -->
 	<link type="text/css" rel="stylesheet" href="assets/style/base.min.css"/>    
@@ -13,18 +13,23 @@
 <h1 class="mb20">jQuery Image Resize Plugin in <a href="https://github.com/adeelejaz/jquery-image-resize">GitHub</a></h1>
 
 <div id="aeImageResize_wrap">
-	<img src="./assets/images/aeImageResize/EclipseCanoo1440x900.png" alt="EclipseCanoo" />
-	<img src="./assets/images/aeImageResize/Sky.jpg" alt="Sky" />
+	<img src="./assets/images/aeImageResize/EclipseCanoo1440x900.png" alt="EclipseCanoo" width="300" />
+	<img src="./assets/images/aeImageResize/Sky.jpg" alt="Sky" width="300" />
 </div>
 
 <!--// seajs config [localhost] -->
 <script src="./assets/script/sea-modules/seajs/2.0.0/sea.js" data-config="./assets/script/config.js" id="seajsnode"></script>
 <script type="text/javascript">
-    seajs.use(['$', 'aeImageResize'], function ($) {
+    seajs.use(['$', 'imgReady'], function ($, imgReady) {
         $(function () {
-			$('img', '#aeImageResize_wrap').aeImageResize({
-				height: 250,
-				width: 250
+			$('img', '#aeImageResize_wrap').each(function (){
+				var _this = this,
+					_src = _this.src;
+				imgReady(_src, function(){
+					if(window.console){
+						console.log(_this.alt + '==> width: ' + this.width + '; & height: ' + this.height + ';');
+					}
+				})
 			});            
         });
     });

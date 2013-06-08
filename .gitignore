@@ -169,3 +169,7 @@ pip-log.txt
 node_modules/
 
 
+#############
+## WebStorm
+#############
+.idea/

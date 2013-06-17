@@ -5,20 +5,18 @@ module.exports = function (grunt) {
       // 编译
       compile: {
         files: {
-          'assets/style/base.css': 'assets/less/base.less'
+          'style/base.css': 'less/base.less'
         }
-      }
+      },
       // 压缩
-	  /*
       yuicompress: {
-        files: {
-			'assets/style/base.min.css': 'assets/style/base.css'
-        },
-        options: {
+		options: {
           yuicompress: true
-        }
+        },
+        files: {
+			'style/base.min.css': 'style/base.css'
+        }        
       }
-	  */
     },
 	// 压缩 CSS 文件
 	cssmin: {
@@ -27,8 +25,8 @@ module.exports = function (grunt) {
 		},
 		combine: {
 			files: {
-			  'assets/style/base.min.css': 'assets/style/base.css',
-			  'assets/script/lib/artDialog/5.0.3/skin/default.min.css': 'assets/script/lib/artDialog/5.0.3/skin/default.css'
+			  'style/base.min.css': 'style/base.css',
+			  'script/lib/artDialog/5.0.3/skin/default.min.css': 'script/lib/artDialog/5.0.3/skin/default.css'
 			}
 		}
 	},
@@ -37,13 +35,13 @@ module.exports = function (grunt) {
 			report: 'gzip'
 		},
 		build: {
-			src: 'assets/script/lib/artDialog/5.0.3/jquery.artDialog.js',
-			dest: 'assets/script/lib/artDialog/5.0.3/jquery.artDialog.min.js'
+			src: 'script/lib/artDialog/5.0.3/jquery.artDialog.js',
+			dest: 'script/lib/artDialog/5.0.3/jquery.artDialog.min.js'
 		}
 	},
     watch: {
       scripts: {
-        files: ['assets/less/*.less'],
+        files: ['less/*.less'],
         tasks: ['less']
       }
     }

@@ -11,6 +11,7 @@ seajs.config({
 		,'juicer':'gallery/juicer/0.6.4/juicer'
 		,'json': 'gallery/json/1.0.3/json'
 		,'swfobject': 'gallery/swfobject/2.3.0/swfobject'
+		,'SWFUpload': 'gallery/swfupload/2.2.0/swfupload'
 		
 		// Arale
 		,'carousel': 'arale/switchable/0.9.12/carousel'
@@ -32,10 +33,6 @@ seajs.config({
 		,'aeImageResize': {
 			src: './assets/script/lib/aeImageResize/2.1.3/jquery.ae.image.resize.min.js'
 			,deps: ['$']
-		}
-		,'SWFUpload': {
-			src: './assets/script/lib/swfupload/2.2.0/swfupload.min.js'
-			,exports: 'SWFUpload'
 		}
 	}
 	,preload: [

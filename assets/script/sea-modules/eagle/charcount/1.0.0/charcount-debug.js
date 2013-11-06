@@ -1,7 +1,7 @@
 /** @name: charcount - v1.0.0 
  *  @description: 字数统计插件 
  *  @author: ChenDeSheng 
- *  @date: 2013-08-30 
+ *  @date: 2013-11-06 
  */
 /**
  * 字数统计
@@ -93,11 +93,11 @@ define("eagle/charcount/1.0.0/charcount-debug", [ "gallery/jquery/1.8.0/jquery-d
     };
     // 模块化扩展接口，用于初始化单个统计字数
     var charCount_init = function(content, tipmsg, options) {
-        var options = $.extend(true, {}, settings, options || {}), eventcommon = options.callbacks.common, eventcrisis = options.callbacks.crisis, $content = $(content).eq(0), $tipmsg = $(tipmsg).eq(0), contentEditable = $content.is('[contentEditable="true"]');
+        var options = $.extend(true, {}, settings, options || {}), eventcommon = options.callbacks.common, eventcrisis = options.callbacks.crisis, $content = $(content).eq(0), $tipmsg = $(tipmsg || []).eq(0), contentEditable = $content.is('[contentEditable="true"]');
         /**
 		 * 判断内容元素和提示元素是否存在
 		 */
-        if ($content.length != 1 || $tipmsg.length != 1) {
+        if ($content.length == 0) {
             return null;
         }
         // 获取内容元素的data-charcount，如果已初始化，则直接返回

@@ -117,13 +117,13 @@ define(function(require, exports, module) {
 	  		eventcommon = options.callbacks.common,
 	  		eventcrisis = options.callbacks.crisis,
 			$content = $(content).eq(0),
-			$tipmsg = $(tipmsg).eq(0),
+			$tipmsg = $(tipmsg || []).eq(0),
 			contentEditable = $content.is('[contentEditable="true"]');
 
 		/**
 		 * 判断内容元素和提示元素是否存在
 		 */
-		if ($content.length != 1 || $tipmsg.length != 1) {
+		if ($content.length == 0) {
 			return null;
 		}
 

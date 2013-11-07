@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>iSeaJs - swfobject  </title>
+
+	<!--// 基础样式 -->
+	<link href="assets/styles/one.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/styles/object_unsupported.css" rel="stylesheet" type="text/css" />
+
+	<style>
+		.wrapper {
+		    width: 990px;
+		    margin: 0 auto;
+		}
+		.swfspace{
+			width: 600px;
+			height: 300px;
+			background-color: #eee;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="ui-grid-row">
+			<div class="ui-grid-25">
+				<div class="ui-box">
+				    <div class="ui-box-head">
+				        <div class="ui-box-head-border">
+				        	<h3 class="ui-box-head-title">Lib/swfobject</h3>
+				        </div>
+				    </div>
+				    <div class="ui-box-container">
+				        <div class="ui-box-content">
+
+					        <input type="button" class="ui-button ui-button-mblue" value="creat" id="creat" />
+
+					        <div class="swfspace ">
+					        	<span id="myContent" class="holderspace">swf</span>
+					        </div>
+
+				        </div>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--// 引入seajs -->
+<script src="assets/scripts/lib/jquery/1.10.2/jquery.js"></script>
+<script src="assets/scripts/lib/swfobject/2.2.0/swfobject.js"></script>
+
+
+
+<script type="text/javascript">
+var Log = function log(msg, type) {
+		window.console &&
+        // Do NOT print `log(msg)` in non-debug mode
+        // (type || data.debug) &&
+        // Set the default value of type
+        console[type || (type = "log")] &&
+        // Call native method of console
+        console[type](msg);
+    };
+
+$('#creat').on('click', function(){
+	//Log(swfobject.getFlashPlayerVersion());
+	swfobject.embedSWF("test.swf", "myContent", "300", "120", "9.0.0", "expressInstall.swf");
+});
+</script>
+</body>
+</html>

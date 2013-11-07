@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>REG Test</title>
+<link href="assets/styles/one.css" rel="stylesheet" type="text/css" />
+<link href="assets/styles/object_unsupported.css" rel="stylesheet" type="text/css" />
+<style>
+	.wrapper {
+	    width: 990px;
+	    margin: 0 auto;
+	}
+	.swfspace{
+		width: 300px;
+		height: 120px;
+		background-color: #eee;
+	}
+</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="ui-grid-row">
+			<div class="ui-grid-25">
+				<div class="ui-box">
+				    <div class="ui-box-head">
+				        <div class="ui-box-head-border">
+				        	<h3 class="ui-box-head-title">Gallery/swfobject</h3>
+				        </div>
+				    </div>
+				    <div class="ui-box-container">
+				        <div class="ui-box-content">
+
+					        <div class="swfspace ">
+					        	<span id="myContent2" class="holderspace">swf</span>
+					        </div>
+
+				        </div>
+				    </div>
+				    <div class="ui-box-container">
+				        <div class="ui-box-content">
+
+					        <input type="button" class="ui-button ui-button-mblue" value="creat" id="creat" />
+
+					        <div class="swfspace ">
+					        	<span id="myContent" class="holderspace">swf</span>
+					        </div>
+
+				        </div>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--// 引入seajs -->
+<script src="assets/scripts/sea-modules/seajs/2.1.1/sea.js" id="seajsnode"></script>
+<script src="assets/scripts/sea-modules/config.js"></script>
+<script>
+var Log = function log(msg, type) {
+		window.console &&
+        // Do NOT print `log(msg)` in non-debug mode
+        // (type || data.debug) &&
+        // Set the default value of type
+        console[type || (type = "log")] &&
+        // Call native method of console
+        console[type](msg);
+    };
+
+seajs.use([
+	'$',
+	'swfobject'
+], function($, swfobject){
+
+	swfobject.embedSWF("test.swf", "myContent2", "300", "120", "9.8.0", "assets/scripts/lib/swfobject/2.2.0/expressInstall.swf");
+
+	$('#creat').on('click', function(){
+		swfobject.embedSWF("test.swf", "myContent", "300", "120", "11.8.0", "assets/scripts/lib/swfobject/2.2.0/expressInstall.swf");
+	});
+
+});
+
+</script>
+</body>
+</html>

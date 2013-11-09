@@ -11,7 +11,7 @@ seajs.config({
 		,'cookie': 'gallery/cookie/1.0.2/cookie'
 		,'juicer': 'gallery/juicer/0.6.4/juicer'
 		,'json': 'gallery/json/1.0.3/json'
-		,'swfobject': 'gallery/swfobject/2.2.0/swfobject-debug'
+		,'swfobject': 'gallery/swfobject/2.2.0/swfobject'
 		,'SWFUpload': 'gallery/swfupload/2.2.0/swfupload'
 		,'moment': 'gallery/moment/2.0.0/moment'
 		,'math': 'gallery/mathjs/0.9.0/math'
@@ -37,7 +37,7 @@ seajs.config({
 		,'autocomplete': 'jquery/autocomplete/1.1.0/autocomplete'
 
 		// eagle(JavaScript by us)
-	    // 字数统计
+		// 字数统计
 		,'charcount': 'eagle/charcount/1.0.0/charcount'
 		// 'imgReady': 图片头数据加载就绪事件 - 更快获取图片尺寸
 		,'imgReady': 'eagle/imgReady/1.0.0/imgReady'

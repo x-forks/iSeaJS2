@@ -3,30 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <title>iSeaJs - swfobject </title>
-	
-	<!--// 基础样式 -->
-	<link type="text/css" rel="stylesheet" href="assets/style/base.min.css"/>
 
-    <!--// 引入seajs -->
-	<script src="./assets/scripts/sea-modules/seajs/2.1.1/sea.js" id="seajsnode"></script>
-	<script src="./assets/scripts/sea-modules/config.js"></script>
-
-
+	<link href="assets/styles/one.css" rel="stylesheet" type="text/css" />
+	<link href="assets/styles/object_unsupported.css" rel="stylesheet" type="text/css" />
+	<style>
+		.wrapper {
+		    width: 990px;
+		    margin: 0 auto;
+		}
+		.swfspace{
+			width: 300px;
+			height: 120px;
+			background-color: #eee;
+		}
+	</style>
 </head>
 
 <body>
-<div id="myContent"><!--// creat flash here!!! --></div>
+	<div class="wrapper">
+		<div class="ui-grid-row">
+			<div class="ui-grid-25">
+				<div class="ui-box">
+				    <div class="ui-box-head">
+				        <div class="ui-box-head-border">
+				        	<h3 class="ui-box-head-title">Gallery/swfobject</h3>
+				        </div>
+				    </div>
+				    <div class="ui-box-container">
+				        <div class="ui-box-content">
 
-<script type="text/javascript">
-seajs.use(['$'], function ($) {
-	$(function(){
-		seajs.use(['swfobject'], function () {
-			swfobject.embedSWF("./assets/swf/test.swf", "myContent", "300", "140", "9.0.0", "expressInstall.swf");
-		});
+					        <div class="swfspace ">
+					        	<span id="myContent2" class="holderspace" data-download-flashplayer="http://www.baidu.com/">DOM READY 即加载flash，Attribute('data-download-flashplayer')指向百度!</span>
+					        </div>
+					        <p class="holderspace">设置替换对象的Attribute('data-download-flashplayer')，可以定制下载Flash Player的地址！</p>
+
+				        </div>
+				    </div>
+				    <div class="ui-box-container">
+				        <div class="ui-box-content">
+
+					        <input type="button" class="ui-button ui-button-mblue" value="creat" id="creat" />
+
+					        <div class="swfspace ">
+					        	<span id="myContent" class="holderspace">需要触发事件加载flash</span>
+					        </div>
+
+				        </div>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--// 引入seajs -->
+<script src="./assets/scripts/sea-modules/seajs/2.1.1/sea.js" id="seajsnode"></script>
+<script src="./assets/scripts/sea-modules/config.js"></script>
+
+<script>
+var Log = function log(msg, type) {
+		window.console &&
+        // Do NOT print `log(msg)` in non-debug mode
+        // (type || data.debug) &&
+        // Set the default value of type
+        console[type || (type = "log")] &&
+        // Call native method of console
+        console[type](msg);
+    };
+
+seajs.use([
+	'$',
+	'swfobject'
+], function($, swfobject){
+
+	swfobject.embedSWF("./assets/swf/test.swf", "myContent2", "300", "120", "9.8.0", "./assets/scripts/lib/swfobject/2.2.0/expressInstall.swf");
+
+	$('#creat').on('click', function(){
+		swfobject.embedSWF("./assets/swf/test.swf", "myContent", "300", "120", "11.8.0", "./assets/scripts/lib/swfobject/2.2.0/expressInstall.swf");
 	});
-});
-</script>
 
+});
+
+</script>
 
 </body>
 </html>

@@ -1,3 +1,4 @@
+;define( function(require, exports, module) {
 /*!	SWFObject v2.2 <http://code.google.com/p/swfobject/>
 	is released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
 */
@@ -709,6 +710,7 @@ var swfobject = function() {
 					else if (xiSwfUrlStr && canExpressInstall()) { // show Adobe Express Install
 						att.data = xiSwfUrlStr;
 						showExpressInstall(att, par, replaceElemIdStr, callbackFn);
+						window.console && console.log('showExpressInstall');
 						return;
 					}
 					else { // show alternative content
@@ -801,3 +803,6 @@ var swfobject = function() {
 		}
 	};
 }();
+window.swfobject = swfobject;
+return swfobject;
+});

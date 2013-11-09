@@ -1,14 +1,14 @@
 {
-  "family": "app",
-  "name": "app1",
-  "description": "THE FIRST TEST OF GRUNT CMD",
-  "author": "Tony <zhujf620@gmail.com>",
+  "family": "gallery",
+  "name": "swfobject",
+  "version": "2.2.0",
+  "description": "SWFObject is an easy-to-use and standards-friendly method to embed Flash content, which utilizes one small JavaScript file",
+  "author": "[http://code.google.com/p/swfobject/]",
   "spm": {
     "alias": {
-      "$": "gallery/jquery/1.8.0/jquery"
     },
     "output": [
-      "main.js"
+      "swfobject.js"
     ]
   },
   "devDependencies": {

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>iSeaJs - regex-weburl </title>
+
+	<!--// AliceUI基础样式 -->
+	<link href="assets/styles/one.css" rel="stylesheet" type="text/css" />
+	<style>
+		.wrapper {
+		    width: 990px;
+		    margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="ui-grid-row">
+			<div class="ui-grid-25">
+				<div class="ui-box">
+				    <div class="ui-box-head">
+				        <div class="ui-box-head-border">
+				        	<h3 class="ui-box-head-title">App/regex-weburl</h3>
+				        </div>
+				    </div>
+				    <div class="ui-box-container">
+				        <div class="ui-box-content">
+
+					        <form action="#" class="ui-form">
+					        	<fieldset>
+					        		<legend>正则验证URL合法性</legend>
+					        		<div class="ui-form-item  ui-form-item-success">
+					        		    <label for="" class="ui-label">需要验证的URL</label>
+					        		    <input class="ui-input" type="text" />
+					        		    <p class="ui-form-explain ui-tiptext ui-tiptext-error">
+					        		        <i class="ui-tiptext-icon iconfont" title="出错">&#xF045;</i>
+					        		        ui-form-item-focus 的效果。
+					        		    </p>
+					        		    <p class="ui-form-explain ui-tiptext ui-tiptext-success">
+					        		        <i class="ui-tiptext-icon iconfont" title="成功">&#xF049;</i>
+					        		        ui-form-item-focus 的效果。
+					        		    </p>
+					        		</div>
+
+					        		<div class="ui-form-item">
+					        		    <label for="test">
+					        		        <input class="ui-checkbox" id="test" value="" type="checkbox">
+					        		        我已阅读并接受自主缴费服务协议
+					        		    </label>
+					        		</div>
+
+					        		<div class="ui-form-item">
+					        		    <input type="submit" class="ui-button ui-button-morange" value="确定">
+					        		    <input type="button" class="ui-button ui-button-mwhite" value="清空">
+					        		</div>
+					        	</fieldset>
+					        </form>
+
+				        </div>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--// 引入seajs -->
+<script src="./assets/scripts/sea-modules/seajs/2.1.1/sea.js" id="seajsnode"></script>
+<script src="./assets/scripts/sea-modules/config.js"></script>
+
+<script type="text/javascript">
+
+seajs.use([
+	'$',
+	'validator',
+	'app/regexWeburl/main.js'
+], function ($, Validator, regexWeburl) {
+	$('#log').on('click', function(){
+		regexWeburl.say();
+	})
+});
+</script>
+
+
+</body>
+</html>

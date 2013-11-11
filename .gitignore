@@ -173,3 +173,10 @@ node_modules/
 ## IDE
 #############
 .idea/
+
+
+#############
+## Sublime Text project config
+#############
+*.sublime-project
+*.sublime-workspace

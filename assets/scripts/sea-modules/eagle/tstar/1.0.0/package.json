@@ -1,15 +1,15 @@
 {
   "family": "eagle",
-  "name": "charcount",
+  "name": "tstar",
   "version": "1.0.0",
-  "description": "字数统计插件",
+  "description": "星星评分",
   "author": "ChenDeSheng",
   "spm": {
     "alias": {
       "$": "jquery/jquery/1.8.3/jquery"
     },
     "output": [
-      "charcount.js"
+      "tstar.js"
     ]
   },
   "devDependencies": {

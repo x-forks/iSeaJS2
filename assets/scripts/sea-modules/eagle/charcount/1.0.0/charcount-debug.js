@@ -1,15 +1,15 @@
 /** @name: charcount - v1.0.0 
  *  @description: 字数统计插件 
  *  @author: ChenDeSheng 
- *  @date: 2013-08-30 
+ *  @date: 2013-11-11 
  */
 /**
  * 字数统计
  * @author: chendesheng
  * @date 2013/08/01
  */
-define("eagle/charcount/1.0.0/charcount-debug", [ "gallery/jquery/1.8.0/jquery-debug" ], function(require, exports, module) {
-    var $ = require("gallery/jquery/1.8.0/jquery-debug");
+define("eagle/charcount/1.0.0/charcount-debug", [ "jquery/jquery/1.8.3/jquery-debug" ], function(require, exports, module) {
+    var $ = require("jquery/jquery/1.8.3/jquery-debug");
     var ua = navigator.userAgent.toLowerCase(), isie = ua.indexOf("msie") > 0, ieversion = isie ? ua.match(/msie ([\d.]+)/)[1] : null, isie6 = isie && ieversion == "6.0";
     // 默认配置属性
     var settings = {
@@ -93,11 +93,11 @@ define("eagle/charcount/1.0.0/charcount-debug", [ "gallery/jquery/1.8.0/jquery-d
     };
     // 模块化扩展接口，用于初始化单个统计字数
     var charCount_init = function(content, tipmsg, options) {
-        var options = $.extend(true, {}, settings, options || {}), eventcommon = options.callbacks.common, eventcrisis = options.callbacks.crisis, $content = $(content).eq(0), $tipmsg = $(tipmsg).eq(0), contentEditable = $content.is('[contentEditable="true"]');
+        var options = $.extend(true, {}, settings, options || {}), eventcommon = options.callbacks.common, eventcrisis = options.callbacks.crisis, $content = $(content).eq(0), $tipmsg = $(tipmsg || []).eq(0), contentEditable = $content.is('[contentEditable="true"]');
         /**
 		 * 判断内容元素和提示元素是否存在
 		 */
-        if ($content.length != 1 || $tipmsg.length != 1) {
+        if ($content.length == 0) {
             return null;
         }
         // 获取内容元素的data-charcount，如果已初始化，则直接返回

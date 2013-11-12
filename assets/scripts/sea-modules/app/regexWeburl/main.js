@@ -103,8 +103,8 @@
 
 	// 对外提供接口
 	module.exports = {
-		say: function() {
-			Log('jquery is ready!');
+		reWeburl: function() {
+			return re_weburl;
 		}
 	};
 

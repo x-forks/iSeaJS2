@@ -27,32 +27,20 @@
 				    <div class="ui-box-container">
 				        <div class="ui-box-content">
 
-					        <form action="#" class="ui-form">
+					        <form action="#" class="ui-form" id="re_form">
 					        	<fieldset>
 					        		<legend>正则验证URL合法性</legend>
-					        		<div class="ui-form-item  ui-form-item-success">
-					        		    <label for="" class="ui-label">需要验证的URL</label>
-					        		    <input class="ui-input" type="text" />
+					        		<div class="ui-form-item">
+					        		    <label for="re_text" class="ui-label">URL</label>
+					        		    <input class="ui-input" type="text" id="re_text" />
 					        		    <p class="ui-form-explain ui-tiptext ui-tiptext-error">
-					        		        <i class="ui-tiptext-icon iconfont" title="出错">&#xF045;</i>
-					        		        ui-form-item-focus 的效果。
-					        		    </p>
-					        		    <p class="ui-form-explain ui-tiptext ui-tiptext-success">
-					        		        <i class="ui-tiptext-icon iconfont" title="成功">&#xF049;</i>
-					        		        ui-form-item-focus 的效果。
+					        		        输入需要验证的url
 					        		    </p>
 					        		</div>
 
 					        		<div class="ui-form-item">
-					        		    <label for="test">
-					        		        <input class="ui-checkbox" id="test" value="" type="checkbox">
-					        		        我已阅读并接受自主缴费服务协议
-					        		    </label>
-					        		</div>
-
-					        		<div class="ui-form-item">
-					        		    <input type="submit" class="ui-button ui-button-morange" value="确定">
-					        		    <input type="button" class="ui-button ui-button-mwhite" value="清空">
+					        		    <input type="submit" id="re_submit" class="ui-button ui-button-morange" value="确定">
+					        		    <input type="button" id="re_reset" class="ui-button ui-button-mwhite" value="清空">
 					        		</div>
 					        	</fieldset>
 					        </form>
@@ -75,9 +63,47 @@ seajs.use([
 	'validator',
 	'app/regexWeburl/main.js'
 ], function ($, Validator, regexWeburl) {
-	$('#log').on('click', function(){
-		regexWeburl.say();
-	})
+
+	// 根据AliceUI定制显示内容
+	var NewValidator = Validator.extend({
+            attrs: {
+                showMessage: function (message, element) {
+                    message = '<i class="ui-tiptext-icon iconfont">&#xF045;</i>\
+                               <span class="ui-form-explain-text">' + message + '</span>';
+                    this.getExplain(element)
+                        .addClass('ui-tiptext ui-tiptext-error')
+                        .html(message);
+                    this.getItem(element).addClass(this.get('itemErrorClass'));
+                }
+            }
+        });
+	window.console && console.log && console.log(regexWeburl.reWeburl());
+	NewValidator.addRule('weburl', regexWeburl.reWeburl(), '请输入合法的{{display}}');
+
+	// 初始化Validator插件
+	var re = new NewValidator({
+			element: '#re_form',
+			onFormValidated: function(err, results, form) {
+				window.console && console.log && console.log(err, results, form);
+			},
+			failSilently: true
+		});
+
+	re.addItem({
+		element: '#re_text',
+		required: true,
+		rule: 'weburl'
+	});
+
+	$('#re_reset')
+		.off('.re')
+		.on('click.re', function(){
+			$('#re_text').val('');
+			re.execute(function(error, results, element) {
+		        window.console && console.log && console.log(arguments);
+		    });
+		})
+
 });
 </script>
 
